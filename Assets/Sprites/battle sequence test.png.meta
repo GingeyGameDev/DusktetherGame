@@ -1,0 +1,280 @@
+fileFormatVersion: 2
+guid: 88c066a016b78f848a88f27fb0e9671c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6391594019192551295
+    second: battle sequence test_0
+  - first:
+      213: 5293952952227467064
+    second: battle sequence test_1
+  - first:
+      213: 7731312251005395961
+    second: battle sequence test_2
+  - first:
+      213: 7919130210735325165
+    second: battle sequence test_3
+  - first:
+      213: -1376474277731260159
+    second: battle sequence test_4
+  - first:
+      213: -6041763669523916099
+    second: battle sequence test_5
+  - first:
+      213: 8980769607519819400
+    second: battle sequence test_6
+  - first:
+      213: 176644552962714047
+    second: battle sequence test_7
+  - first:
+      213: -7771637419324667675
+    second: battle sequence test_8
+  - first:
+      213: 1439360738695764529
+    second: battle sequence test_9
+  - first:
+      213: 4116529254136489299
+    second: battle sequence test_10
+  - first:
+      213: 5124649664203984238
+    second: battle sequence test_11
+  - first:
+      213: 7889804331804750595
+    second: battle sequence test_12
+  - first:
+      213: 8526223730267798980
+    second: battle sequence test_13
+  - first:
+      213: 2343892027923997253
+    second: battle sequence test_14
+  - first:
+      213: -4626167472396622623
+    second: battle sequence test_15
+  - first:
+      213: -3739725904754252563
+    second: battle sequence test_16
+  - first:
+      213: 7933736616395507659
+    second: battle sequence test_17
+  - first:
+      213: -814682450630325863
+    second: battle sequence test_18
+  - first:
+      213: -4292789689488836439
+    second: battle sequence test_19
+  - first:
+      213: 4375976897494361308
+    second: battle sequence test_20
+  - first:
+      213: 1375808522471298650
+    second: battle sequence test_21
+  - first:
+      213: 6142675229711447741
+    second: battle sequence test_22
+  - first:
+      213: 3039868484113324887
+    second: battle sequence test_23
+  - first:
+      213: -2923343393923660741
+    second: battle sequence test_24
+  - first:
+      213: -5835303411864645635
+    second: battle sequence test_25
+  - first:
+      213: 537693879687919239
+    second: battle sequence test_26
+  - first:
+      213: -4967207461384435121
+    second: battle sequence test_27
+  - first:
+      213: -6471427696074205537
+    second: battle sequence test_28
+  - first:
+      213: 2730909678862233446
+    second: battle sequence test_29
+  - first:
+      213: 4880900367454974950
+    second: battle sequence test_30
+  - first:
+      213: -6162777567027425288
+    second: battle sequence test_31
+  - first:
+      213: -7494438028626343466
+    second: battle sequence test_32
+  - first:
+      213: -1814415760503513875
+    second: battle sequence test_33
+  - first:
+      213: -6701787699464175341
+    second: battle sequence test_34
+  - first:
+      213: -1414901540507687485
+    second: battle sequence test_35
+  - first:
+      213: -8472220346079704941
+    second: battle sequence test_36
+  - first:
+      213: -5538043503152813724
+    second: battle sequence test_37
+  - first:
+      213: 6222381158889680549
+    second: battle sequence test_0
+  - first:
+      213: 2291944000968303752
+    second: battle sequence test_1
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 512
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 512
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 512
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: battle sequence test_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 129
+        width: 160
+        height: 223
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5aee3b842b65a5650800000000000000
+      internalID: 6222381158889680549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: battle sequence test_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1
+        width: 32
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 884adc6fcee9ecf10800000000000000
+      internalID: 2291944000968303752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
