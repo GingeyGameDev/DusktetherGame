@@ -10,10 +10,11 @@ public class DialogueStart : MonoBehaviour
 
    Dialogue dialogueScript;
    DialogueManager dialogueManager;
-
+    PlayerMovement playerMovement;
 
     void Awake() 
     {
+       
         dialogueManager = dialogueManagerObject.GetComponent<DialogueManager>();
     }
  

@@ -26,7 +26,7 @@ public class Interaction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetButtonDown("confirm"))
         {
             //get last move floats and normalize
             dirOffSet = new Vector2(anim.GetFloat("horizontalMoveLast"), anim.GetFloat("verticalMoveLast"));
@@ -42,7 +42,7 @@ public class Interaction : MonoBehaviour
                 //sets the interact bool for scripts that need it if the gameobject has the interactable tag
                 if (interactable.collider.gameObject.CompareTag("Interactable"))
                 {
-                    
+                    playerMovement.playerMoveable = false;
                     interactCheck = true;        
                 }
             }

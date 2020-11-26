@@ -1,32 +1,62 @@
 ﻿using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-   
+
+    DialogueReader dialogueReader;
+
+    int lineNumber = 0;
 
     public TMP_Text dialogue;
+    public Image textBox;
+
     private TextAsset dialogueFile;
+    private string charNameManager = "";
+    private string objectNameManager = "";
 
     // Start is called before the first frame update
     void Start()
     {
+        dialogueReader = FindObjectOfType<DialogueReader>();
         dialogue.text = "";
     }
 
     public void GetDialogue(string charName, string objectName, TextAsset dialogueText)
     {
-       
-        if (dialogueText != null)
-        {       
-            dialogueFile = dialogueText;
-            dialogue.text = dialogueFile.text;
+        if (charName != null)
+        {
+            charNameManager = charName;
         }
+        else { charNameManager = null;}
+
+        if (dialogueText != null)
+        {
+            dialogueFile = dialogueText;
+        }
+        else { dialogueFile = null;}
+
+        if (objectNameManager != null)
+        {
+            objectNameManager = objectName;
+        }
+        else { objectNameManager = null;}
     }
 
     private void Update()
     {
-       
+        if (Input.GetButtonDown("confirm"))
+        {
+            
+            dialogueReader.ReadLine(dialogueFile, lineNumber);
+            lineNumber++;
+        }
+        if (dialogueReader.dialogueLine == "<el>") 
+        {
+            textBox.gameObject.SetActive(false);
+        }
+        dialogue.text = dialogueReader.dialogueLine;
     }
 
    

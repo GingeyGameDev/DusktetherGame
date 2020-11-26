@@ -293,6 +293,7 @@ GameObject:
   - component: {fileID: 633147495}
   - component: {fileID: 633147494}
   - component: {fileID: 633147496}
+  - component: {fileID: 633147497}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -309,10 +310,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 633147493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3d9371680b42be4184dd85eccbdbd17, type: 3}
+  m_Script: {fileID: 11500000, guid: a6c618be615525a49b5b2b9ca37daf19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 1170048356}
+  dialogueManagerObject: {fileID: 633147493}
+  textBox: {fileID: 495114867}
 --- !u!4 &633147495
 Transform:
   m_ObjectHideFlags: 0
@@ -336,11 +338,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 633147493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0140d5d066eb24042a414f864ce85c03, type: 3}
+  m_Script: {fileID: 11500000, guid: 676b786642ed4a9479415ceffab319a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueManagerObject: {fileID: 633147493}
-  textBox: {fileID: 495114867}
+  dialogue: {fileID: 1170048356}
+  textBox: {fileID: 495114869}
+--- !u!114 &633147497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633147493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4800049c7e0767c4998d06e515eeaa8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lines: []
+  dialogueLine: 
 --- !u!1 &931336359 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8951890479136356762, guid: 82f564f260c43a7429b8438c32e4f205, type: 3}
@@ -355,11 +371,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 931336359}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd2fe3156b97a7e499ba19f4c34a3abd, type: 3}
+  m_Script: {fileID: 11500000, guid: 1082451c302b0dc41963731fd1e6ba67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   charName: 
-  objectName: double desk1 Left
+  objectName: 
   dialogueText: {fileID: 0}
 --- !u!114 &931336364
 MonoBehaviour:
@@ -521,11 +537,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1181673067}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd2fe3156b97a7e499ba19f4c34a3abd, type: 3}
+  m_Script: {fileID: 11500000, guid: 1082451c302b0dc41963731fd1e6ba67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   charName: 
-  objectName: desk1
+  objectName: desk
   dialogueText: {fileID: 0}
 --- !u!114 &1181673072
 MonoBehaviour:
@@ -565,7 +581,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1264942149}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd2fe3156b97a7e499ba19f4c34a3abd, type: 3}
+  m_Script: {fileID: 11500000, guid: 1082451c302b0dc41963731fd1e6ba67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   charName: 
@@ -1300,7 +1316,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2080146033}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd2fe3156b97a7e499ba19f4c34a3abd, type: 3}
+  m_Script: {fileID: 11500000, guid: 1082451c302b0dc41963731fd1e6ba67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   charName: 
