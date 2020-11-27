@@ -291,9 +291,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 633147495}
-  - component: {fileID: 633147494}
   - component: {fileID: 633147496}
   - component: {fileID: 633147497}
+  - component: {fileID: 633147494}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged

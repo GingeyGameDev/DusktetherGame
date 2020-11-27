@@ -22,6 +22,7 @@ public class Interacted : MonoBehaviour
             //the gameobject hit by the raycast in Interaction
             interactedGameObject = interaction.interactable.collider.gameObject;
 
+            dialogueStart.gameObject.SetActive(true);
 
             //Right
             if (interaction.dirOffSet.x >= 0.5f)

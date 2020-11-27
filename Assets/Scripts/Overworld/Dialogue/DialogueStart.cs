@@ -16,11 +16,14 @@ public class DialogueStart : MonoBehaviour
     {
        
         dialogueManager = dialogueManagerObject.GetComponent<DialogueManager>();
+
     }
  
     public void dialogueStart(string direction, GameObject interactedObject) 
     {
+        
         textBox.SetActive(true);
+        
 
         dialogueScript = interactedObject.GetComponentInParent<Dialogue>();
 
@@ -38,6 +41,7 @@ public class DialogueStart : MonoBehaviour
         {
             objectDialogue(direction);
         }
+        
     }
 
     void characterDialogue(string direction) 

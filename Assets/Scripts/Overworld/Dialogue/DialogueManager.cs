@@ -12,15 +12,22 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text dialogue;
     public Image textBox;
 
+    PlayerMovement playerMovement;
+
     private TextAsset dialogueFile;
     private string charNameManager = "";
     private string objectNameManager = "";
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         dialogueReader = FindObjectOfType<DialogueReader>();
         dialogue.text = "";
+
+
+        lineNumber = 0;
+        
     }
 
     public void GetDialogue(string charName, string objectName, TextAsset dialogueText)
@@ -42,19 +49,23 @@ public class DialogueManager : MonoBehaviour
             objectNameManager = objectName;
         }
         else { objectNameManager = null;}
+
+        dialogueReader.ReadLine(dialogueFile, lineNumber);
     }
 
     private void Update()
     {
-        if (Input.GetButtonDown("confirm"))
+        if (dialogueReader.dialogueLine != "" && Input.GetButtonDown("confirm"))
         {
             
             dialogueReader.ReadLine(dialogueFile, lineNumber);
             lineNumber++;
         }
-        if (dialogueReader.dialogueLine == "<el>") 
+        if (dialogueReader.dialogueLine == "<el>" || dialogueReader.dialogueLine == "<el>") 
         {
             textBox.gameObject.SetActive(false);
+            playerMovement.playerMoveable = true;
+            lineNumber = 0;
         }
         dialogue.text = dialogueReader.dialogueLine;
     }
