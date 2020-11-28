@@ -16,9 +16,11 @@ public class DialogueReader : MonoBehaviour
         {
             lines = dialogueFile.text.Split('\n');
 
+            lines[lineNum] = lines[lineNum].Trim(' ', '\n', '\r');
+
             Debug.Log(lines[lineNum]);
             dialogueLine = lines[lineNum];
         }
     }
-
+    
 }

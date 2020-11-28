@@ -66,6 +66,7 @@ public class DialogueManager : MonoBehaviour
             textBox.gameObject.SetActive(false);
             playerMovement.playerMoveable = true;
             lineNumber = 0;
+            dialogueFile = default;
         }
         dialogue.text = dialogueReader.dialogueLine;
     }
