@@ -34,27 +34,28 @@ public class DialogueStart : MonoBehaviour
         //if the character has a name
         else if (dialogueScript.charName != "")
         {
-            characterDialogue(direction);
+            characterDialogue(direction, interactedObject);
         }
         //if the object has a name
         else if (dialogueScript.objectName != "")
         {
-            objectDialogue(direction);
+            objectDialogue(direction, interactedObject);
         }
         
     }
 
-    void characterDialogue(string direction) 
+    void characterDialogue(string direction, GameObject interactedObject) 
     {
         Debug.Log("character dialogue " + direction);
-        dialogueManager.GetDialogue(dialogueScript.charName,null, dialogueScript.dialogueText);
+        dialogueManager.GetDialogue(dialogueScript.charName,null, interactedObject, dialogueScript.dialogueText);
+        
     }
 
-    void objectDialogue(string direction) 
+    void objectDialogue(string direction, GameObject interactedObject) 
     {
         Debug.Log(dialogueScript.objectName + " dialogue " + direction);
 
-         dialogueManager.GetDialogue(dialogueScript.charName, dialogueScript.objectName, dialogueScript.dialogueText);
+         dialogueManager.GetDialogue(dialogueScript.charName, dialogueScript.objectName, interactedObject, dialogueScript.dialogueText);
        
     }
 }

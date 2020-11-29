@@ -376,6 +376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: 
   objectName: 
+  timesInteracted: 0
   dialogueText: {fileID: 0}
 --- !u!114 &931336364
 MonoBehaviour:
@@ -542,6 +543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: 
   objectName: desk
+  timesInteracted: 0
   dialogueText: {fileID: 0}
 --- !u!114 &1181673072
 MonoBehaviour:
@@ -586,6 +588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: 
   objectName: 
+  timesInteracted: 0
   dialogueText: {fileID: 0}
 --- !u!1001 &1294828060
 PrefabInstance:
@@ -1320,7 +1323,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charName: 
-  objectName: lamp
+  objectName: Lamp1
+  timesInteracted: 0
   dialogueText: {fileID: 4900000, guid: 79d5a06da86f53545bdde9e293cd1d82, type: 3}
 --- !u!1 &2117581265
 GameObject:
