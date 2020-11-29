@@ -10,7 +10,7 @@ public class DialogueStart : MonoBehaviour
 
    Dialogue dialogueScript;
    DialogueManager dialogueManager;
-    PlayerMovement playerMovement;
+   PlayerMovement playerMovement;
 
     void Awake() 
     {
@@ -21,27 +21,27 @@ public class DialogueStart : MonoBehaviour
  
     public void dialogueStart(string direction, GameObject interactedObject) 
     {
-        
-        textBox.SetActive(true);
-        
-
         dialogueScript = interactedObject.GetComponentInParent<Dialogue>();
 
-        if (dialogueScript.charName != "" && dialogueScript.objectName != "")
+        if (dialogueScript.dialogueText.text != "" || dialogueScript.dialogueText.text != null)
         {
-            Debug.Log("Incorrect Interaction Name Inputted");
+            textBox.SetActive(true);
+
+            if (dialogueScript.charName != "" && dialogueScript.objectName != "")
+            {
+                Debug.Log("Incorrect Interaction Name Inputted");
+            }
+            //if the character has a name
+            else if (dialogueScript.charName != "")
+            {
+                characterDialogue(direction, interactedObject);
+            }
+            //if the object has a name
+            else if (dialogueScript.objectName != "")
+            {
+                objectDialogue(direction, interactedObject);
+            }
         }
-        //if the character has a name
-        else if (dialogueScript.charName != "")
-        {
-            characterDialogue(direction, interactedObject);
-        }
-        //if the object has a name
-        else if (dialogueScript.objectName != "")
-        {
-            objectDialogue(direction, interactedObject);
-        }
-        
     }
 
     void characterDialogue(string direction, GameObject interactedObject) 

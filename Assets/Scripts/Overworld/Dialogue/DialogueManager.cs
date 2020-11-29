@@ -57,6 +57,7 @@ public class DialogueManager : MonoBehaviour
         else { dialogueFile = default; }
 
         dialogueReader.ReadLine(dialogueFile, nameManager, dialogueScript.timesInteracted, lineNumber);
+        lineNumber++;
     }
 
     private void Update()
@@ -66,18 +67,21 @@ public class DialogueManager : MonoBehaviour
             
             dialogueReader.ReadLine(dialogueFile, nameManager, dialogueScript.timesInteracted, lineNumber);
             lineNumber++;
+            
+           
         }
-        if (dialogueReader.dialogueLine == "<el>" || dialogueReader.dialogueLine == "<el>") 
-        {
-            textBox.gameObject.SetActive(false);
-            playerMovement.playerMoveable = true;
-            lineNumber = 0;
-            dialogueScript.timesInteracted++; //BROKEN
-            dialogueFile = default;
-        }
+     
         dialogue.text = dialogueReader.dialogueLine;
     }
 
-   
+    public void DialogueEnd() 
+    {
+        textBox.gameObject.SetActive(false);
+
+        dialogueScript.timesInteracted++;
+        dialogueFile = default;
+        playerMovement.playerMoveable = true;
+        lineNumber = 0;
+    }  
 
 }

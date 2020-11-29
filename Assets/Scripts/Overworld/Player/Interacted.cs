@@ -14,7 +14,7 @@ public class Interacted : MonoBehaviour
 
     public void Update () 
     {
-        //
+        //Change - make function called in interaction instead of using update
         if (interaction.interactCheck) 
         {
             interaction.interactCheck = false;
@@ -22,7 +22,7 @@ public class Interacted : MonoBehaviour
             //the gameobject hit by the raycast in Interaction
             interactedGameObject = interaction.interactable.collider.gameObject;
 
-            dialogueStart.gameObject.SetActive(true);
+          // dialogueStart.gameObject.SetActive(true);
 
             //Right
             if (interaction.dirOffSet.x >= 0.5f)
