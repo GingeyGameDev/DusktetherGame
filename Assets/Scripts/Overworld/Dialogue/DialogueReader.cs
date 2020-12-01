@@ -9,6 +9,7 @@ public class DialogueReader : MonoBehaviour
     public string[] lines;
 
     public string dialogueLine;
+    public int lineNum;
 
     DialogueManager dialogueManager;
 
@@ -17,7 +18,7 @@ public class DialogueReader : MonoBehaviour
         dialogueManager = FindObjectOfType<DialogueManager>();
     }
 
-    public void ReadLine(TextAsset dialogueFile, string name, int timesInteracted = 0, int lineNum = 0) 
+    public void ReadLine(TextAsset dialogueFile, string name, int timesInteracted = 0) 
     {
         if (dialogueFile != null)
         {

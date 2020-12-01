@@ -10,7 +10,7 @@ public class DialogueManager : MonoBehaviour
     int lineNumber = 0;
 
     public TMP_Text dialogue;
-    public Image textBox;
+    public GameObject textBox;
 
     PlayerMovement playerMovement;
     Dialogue dialogueScript;
@@ -18,7 +18,7 @@ public class DialogueManager : MonoBehaviour
     private TextAsset dialogueFile;
     private string nameManager = "";
     
-
+    
     // Start is called before the first frame update
     void Awake()
     {
@@ -26,47 +26,50 @@ public class DialogueManager : MonoBehaviour
         dialogueReader = FindObjectOfType<DialogueReader>();
         dialogue.text = "";
 
-
-        lineNumber = 0;
-        
     }
 
-    public void GetDialogue(string charName, string objectName, GameObject interactedObject, TextAsset dialogueText)
+    public void GetDialogue(string direction, GameObject interactedObject)
     {
+
         dialogueScript = interactedObject.GetComponent<Dialogue>();
 
-        if (charName != "")
+        textBox.SetActive(true);
+
+        if (dialogueScript.charName != "" && dialogueScript.objectName != "")
         {
-            nameManager = charName;
-          
+            Debug.Log("Incorrect Interaction Name Inputted");
         }
-        else if (objectName != null)
+
+        if (dialogueScript.charName != "")
         {
-           nameManager = objectName;
+            nameManager = dialogueScript.charName;
+            Debug.Log(nameManager + "dialogue " + direction);
+
+        }
+        else if (dialogueScript.objectName != null)
+        {
+           nameManager = dialogueScript.objectName;
+            Debug.Log(nameManager + " dialogue " + direction);
 
         }
         else {nameManager = null;}
 
-      
+        dialogueFile = dialogueScript.dialogueText;
 
 
-        if (dialogueText != null)
-        {
-            dialogueFile = dialogueText;
-        }
-        else { dialogueFile = default; }
+        dialogueReader.ReadLine(dialogueFile, nameManager, dialogueScript.timesInteracted);
+        
 
-        dialogueReader.ReadLine(dialogueFile, nameManager, dialogueScript.timesInteracted, lineNumber);
-        lineNumber++;
+
     }
 
     private void Update()
     {
         if (dialogueReader.dialogueLine != "" && Input.GetButtonDown("confirm"))
         {
+            dialogueReader.lineNum++;
+            dialogueReader.ReadLine(dialogueFile, nameManager, dialogueScript.timesInteracted);
             
-            dialogueReader.ReadLine(dialogueFile, nameManager, dialogueScript.timesInteracted, lineNumber);
-            lineNumber++;
             
            
         }
@@ -76,12 +79,12 @@ public class DialogueManager : MonoBehaviour
 
     public void DialogueEnd() 
     {
-        textBox.gameObject.SetActive(false);
+        textBox.SetActive(false);
 
         dialogueScript.timesInteracted++;
         dialogueFile = default;
         playerMovement.playerMoveable = true;
-        lineNumber = 0;
-    }  
+        dialogueReader.lineNum = 0;
+    }
 
 }

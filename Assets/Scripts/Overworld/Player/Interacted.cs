@@ -3,21 +3,17 @@
 public class Interacted : MonoBehaviour
 {
     GameObject interactedGameObject;
-    DialogueStart dialogueStart;
+    DialogueManager dialogueManager;
 
     Interaction interaction;
     private void Start()
     {
-        dialogueStart = FindObjectOfType<DialogueStart>();
+        dialogueManager = FindObjectOfType<DialogueManager>();
         interaction = GameObject.FindGameObjectWithTag("Player").GetComponent<Interaction>();
     }
 
-    public void Update () 
+    public void InteractCheck () 
     {
-        //Change - make function called in interaction instead of using update
-        if (interaction.interactCheck) 
-        {
-            interaction.interactCheck = false;
 
             //the gameobject hit by the raycast in Interaction
             interactedGameObject = interaction.interactable.collider.gameObject;
@@ -46,30 +42,29 @@ public class Interacted : MonoBehaviour
                 DownFace();
             }
         }   
-    }
 
     void UpFace() 
     {
         //dialogueStart takes the game object and the direction faced
-        dialogueStart.dialogueStart("up", interactedGameObject);
+        dialogueManager.GetDialogue("up", interactedGameObject);
         
     }
 
     void DownFace() 
     {
         //dialogueStart takes the game object and the direction faced
-        dialogueStart.dialogueStart("down", interactedGameObject);
+        dialogueManager.GetDialogue("down", interactedGameObject);
     }
 
     void RightFace() 
     {
         //dialogueStart takes the game object and the direction faced
-        dialogueStart.dialogueStart("right", interactedGameObject);
+        dialogueManager.GetDialogue("right", interactedGameObject);
     }
 
     void LeftFace() 
     {
         //dialogueStart takes the game object and the direction faced
-        dialogueStart.dialogueStart("left", interactedGameObject);
+        dialogueManager.GetDialogue("left", interactedGameObject);
     }
 }
