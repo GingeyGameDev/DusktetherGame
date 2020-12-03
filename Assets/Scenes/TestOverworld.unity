@@ -292,7 +292,7 @@ GameObject:
   m_Component:
   - component: {fileID: 633147495}
   - component: {fileID: 633147496}
-  - component: {fileID: 633147497}
+  - component: {fileID: 633147494}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -300,6 +300,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &633147494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633147493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4800049c7e0767c4998d06e515eeaa8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lines: []
+  dialogueLine: 
+  lineNum: 0
 --- !u!4 &633147495
 Transform:
   m_ObjectHideFlags: 0
@@ -328,21 +343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue: {fileID: 1170048356}
   textBox: {fileID: 495114867}
---- !u!114 &633147497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 633147493}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4800049c7e0767c4998d06e515eeaa8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lines: []
-  dialogueLine: 
-  lineNum: 0
+  dialogueFile: {fileID: 4900000, guid: c3dbc1fa5f1df4d48bb506c64414d0cf, type: 3}
 --- !u!1 &931336359 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8951890479136356762, guid: 82f564f260c43a7429b8438c32e4f205, type: 3}

@@ -1,20 +1,20 @@
 ﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
 
 public class DialogueManager : MonoBehaviour
 {
 
     DialogueReader dialogueReader;
 
-    int lineNumber = 0;
 
     public TMP_Text dialogue;
     public GameObject textBox;
 
     PlayerMovement playerMovement;
     Dialogue dialogueScript;
-
+    [SerializeField]
     private TextAsset dialogueFile;
     private string nameManager = "";
     
@@ -30,9 +30,11 @@ public class DialogueManager : MonoBehaviour
 
     public void GetDialogue(string direction, GameObject interactedObject)
     {
+        playerMovement.playerMoveable = false;
+
 
         dialogueScript = interactedObject.GetComponent<Dialogue>();
-
+        dialogueFile = dialogueScript.dialogueText;
         textBox.SetActive(true);
 
         if (dialogueScript.charName != "" && dialogueScript.objectName != "")
@@ -49,12 +51,13 @@ public class DialogueManager : MonoBehaviour
         else if (dialogueScript.objectName != null)
         {
            nameManager = dialogueScript.objectName;
-            Debug.Log(nameManager + " dialogue " + direction);
+          //  Debug.Log(nameManager + " dialogue " + direction);
 
         }
         else {nameManager = null;}
 
-        dialogueFile = dialogueScript.dialogueText;
+
+        if (dialogueFile == null) { Debug.Log("file missing manager"); }
 
 
         dialogueReader.ReadLine(dialogueFile, nameManager, dialogueScript.timesInteracted);
@@ -63,9 +66,14 @@ public class DialogueManager : MonoBehaviour
 
     }
 
+    public void TextUpdate() 
+    {
+        dialogue.text = dialogueReader.dialogueLine;
+    }
+
     private void Update()
     {
-        if (dialogueReader.dialogueLine != "" && Input.GetButtonDown("confirm"))
+        if (dialogueFile != null  && Input.GetButtonDown("confirm"))
         {
             dialogueReader.lineNum++;
             dialogueReader.ReadLine(dialogueFile, nameManager, dialogueScript.timesInteracted);
@@ -74,17 +82,22 @@ public class DialogueManager : MonoBehaviour
            
         }
      
-        dialogue.text = dialogueReader.dialogueLine;
+        
     }
 
-    public void DialogueEnd() 
+    public IEnumerator DialogueEnd() 
     {
+        Debug.Log("end dialogue");
+        
         textBox.SetActive(false);
 
-        dialogueScript.timesInteracted++;
+        
         dialogueFile = default;
-        playerMovement.playerMoveable = true;
+        
+        dialogueScript.timesInteracted++;
         dialogueReader.lineNum = 0;
+        yield return new WaitForEndOfFrame();
+        playerMovement.playerMoveable = true;
     }
 
 }

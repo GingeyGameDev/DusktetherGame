@@ -9,7 +9,7 @@ public class DialogueReader : MonoBehaviour
     public string[] lines;
 
     public string dialogueLine;
-    public int lineNum;
+    public int lineNum = 0;
 
     DialogueManager dialogueManager;
 
@@ -18,36 +18,53 @@ public class DialogueReader : MonoBehaviour
         dialogueManager = FindObjectOfType<DialogueManager>();
     }
 
-    public void ReadLine(TextAsset dialogueFile, string name, int timesInteracted = 0) 
+    public void ReadLine(TextAsset dialogueFile, string name, int timesInteracted)
     {
         if (dialogueFile != null)
         {
+           
+
+
             int dialoguestartline = dialogueFile.text.IndexOf('<' + name + '-' + timesInteracted + '>');
 
-            Debug.Log('<' + name + '-' + timesInteracted + '>');
+
+          //  Debug.Log('<' + name + '-' + timesInteracted + '>');
 
             string dialogueBlock = null;
-            
+
             dialogueBlock = dialogueFile.text.Substring(dialoguestartline, dialogueFile.text.IndexOf("<el>", dialoguestartline) + 4);
 
             lines = dialogueBlock.Split('\n');
-        }
+
 
             lines[lineNum] = lines[lineNum].Trim(' ', '\n', '\r');
 
-        if (lines[lineNum] == ('<' + name + '-' + timesInteracted + '>')) 
-        {
-            lineNum++;
-        }
-        Debug.Log(lineNum);
-            Debug.Log(lines[lineNum]);
+            
+
             dialogueLine = lines[lineNum];
 
-        if (dialogueLine == "<el>" || dialogueLine == "<el>") 
-        {
-            dialogueManager.DialogueEnd();
+            if (dialogueLine == ('<' + name + '-' + timesInteracted + '>'))
+            {
+                lineNum++;
+                ReadLine(dialogueFile, name, timesInteracted);
+            }
+
+            Debug.Log(dialogueLine);
+
+
+            if (dialogueLine == "<el>" || dialogueLine == "<el> ")
+            {
+                dialogueManager.StartCoroutine("DialogueEnd");
+            }
+            dialogueManager.TextUpdate();
+
+            dialogueLine = null;
         }
-    }
+        else 
+        {
+            Debug.Log("Dialogue file is null");
+        }
+    } 
 }
     
 

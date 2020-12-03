@@ -14,7 +14,7 @@ public class Interacted : MonoBehaviour
 
     public void InteractCheck () 
     {
-
+        
             //the gameobject hit by the raycast in Interaction
             interactedGameObject = interaction.interactable.collider.gameObject;
 

@@ -1,8 +1,10 @@
+
 <Lamp1-0>
 A lamp in the middle of a path?
 That doesnt make any sense.
 But does anything really?
 <el>
 
-
-test
+<Lamp1-1>
+why are you seeing this?
+<el>
