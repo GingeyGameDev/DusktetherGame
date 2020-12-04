@@ -22,17 +22,17 @@ public class DialogueReader : MonoBehaviour
     {
         if (dialogueFile != null)
         {
-           
+
+            int dialogueStartLine = 0;
+
+            dialogueStartLine = dialogueFile.text.IndexOf('<' + name + '-' + timesInteracted + '>');
 
 
-            int dialoguestartline = dialogueFile.text.IndexOf('<' + name + '-' + timesInteracted + '>');
-
-
-          //  Debug.Log('<' + name + '-' + timesInteracted + '>');
+          Debug.Log('<' + name + '-' + timesInteracted + '>');
 
             string dialogueBlock = null;
 
-            dialogueBlock = dialogueFile.text.Substring(dialoguestartline, dialogueFile.text.IndexOf("<el>", dialoguestartline) + 4);
+            dialogueBlock = dialogueFile.text.Substring(dialogueStartLine, (dialogueFile.text.IndexOf(("<el>"), dialogueStartLine)-dialogueStartLine + 4));
 
             lines = dialogueBlock.Split('\n');
 
@@ -49,16 +49,28 @@ public class DialogueReader : MonoBehaviour
                 ReadLine(dialogueFile, name, timesInteracted);
             }
 
+            if (dialogueLine == "<rl>") 
+            {
+                lineNum++;
+                timesInteracted = timesInteracted - 1;
+                ReadLine(dialogueFile, name, timesInteracted);
+            }
+
             Debug.Log(dialogueLine);
 
 
-            if (dialogueLine == "<el>" || dialogueLine == "<el> ")
+            if (dialogueLine == "<el>" || dialogueLine == "<rl>")
             {
-                dialogueManager.StartCoroutine("DialogueEnd");
+
+               /* if (dialogueLine == "<rl>") 
+                {
+                    dialogueManager.StartCoroutine("DialogueEnd", true);
+                } */
+                dialogueManager.StartCoroutine("DialogueEnd", false);
             }
             dialogueManager.TextUpdate();
 
-            dialogueLine = null;
+            
         }
         else 
         {

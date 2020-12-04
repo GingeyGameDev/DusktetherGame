@@ -73,7 +73,9 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if (dialogueFile != null  && Input.GetButtonDown("confirm"))
+        
+        if (playerMovement.playerMoveable == false && Input.GetButtonDown("confirm"))
+
         {
             dialogueReader.lineNum++;
             dialogueReader.ReadLine(dialogueFile, nameManager, dialogueScript.timesInteracted);
@@ -85,7 +87,7 @@ public class DialogueManager : MonoBehaviour
         
     }
 
-    public IEnumerator DialogueEnd() 
+    public IEnumerator DialogueEnd(bool removeOne) 
     {
         Debug.Log("end dialogue");
         
@@ -93,8 +95,11 @@ public class DialogueManager : MonoBehaviour
 
         
         dialogueFile = default;
-        
-        dialogueScript.timesInteracted++;
+
+        if (!removeOne) 
+        {
+            dialogueScript.timesInteracted++;
+        }
         dialogueReader.lineNum = 0;
         yield return new WaitForEndOfFrame();
         playerMovement.playerMoveable = true;
