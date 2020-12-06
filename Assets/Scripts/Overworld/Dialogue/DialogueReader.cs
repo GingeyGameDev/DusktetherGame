@@ -11,6 +11,8 @@ public class DialogueReader : MonoBehaviour
     public string dialogueLine;
     public int lineNum = 0;
 
+    public float scrollTime;
+
     DialogueManager dialogueManager;
 
     private void Start()
@@ -20,6 +22,8 @@ public class DialogueReader : MonoBehaviour
 
     public void ReadLine(TextAsset dialogueFile, string name, int timesInteracted)
     {
+        scrollTime = 0.025f;
+
         if (dialogueFile != null)
         {
 
@@ -52,31 +56,38 @@ public class DialogueReader : MonoBehaviour
             if (dialogueLine == "<rl>") 
             {
                 lineNum++;
-                timesInteracted = timesInteracted - 1;
-                ReadLine(dialogueFile, name, timesInteracted);
+
+                dialogueManager.StartCoroutine("DialogueEnd", true);
             }
 
             Debug.Log(dialogueLine);
 
 
-            if (dialogueLine == "<el>" || dialogueLine == "<rl>")
+            if (dialogueLine == "<el>")
             {
-
-               /* if (dialogueLine == "<rl>") 
-                {
-                    dialogueManager.StartCoroutine("DialogueEnd", true);
-                } */
                 dialogueManager.StartCoroutine("DialogueEnd", false);
             }
-            dialogueManager.TextUpdate();
 
+            StartCoroutine("TextScroll", scrollTime);
             
         }
         else 
         {
             Debug.Log("Dialogue file is null");
         }
-    } 
+    }
+    public IEnumerator TextScroll(float waitTime) 
+    {
+        string tempLine = null;
+        for (var i = 0; i <= dialogueLine.Length; i++)
+        {
+            tempLine = dialogueLine.Substring(0, i);        
+            dialogueManager.TextUpdate(tempLine);
+            yield return new WaitForSecondsRealtime(scrollTime);
+
+        }
+    }
+
 }
     
 

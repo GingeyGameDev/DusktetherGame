@@ -33,7 +33,7 @@ public class DialogueManager : MonoBehaviour
         playerMovement.playerMoveable = false;
 
 
-        dialogueScript = interactedObject.GetComponent<Dialogue>();
+        dialogueScript = interactedObject.GetComponentInParent<Dialogue>();
         dialogueFile = dialogueScript.dialogueText;
         textBox.SetActive(true);
 
@@ -66,9 +66,10 @@ public class DialogueManager : MonoBehaviour
 
     }
 
-    public void TextUpdate() 
+    public void TextUpdate(string tempLine) 
     {
-        dialogue.text = dialogueReader.dialogueLine;
+        dialogue.text = tempLine;
+
     }
 
     private void Update()
@@ -77,9 +78,13 @@ public class DialogueManager : MonoBehaviour
         if (playerMovement.playerMoveable == false && Input.GetButtonDown("confirm"))
 
         {
-            dialogueReader.lineNum++;
-            dialogueReader.ReadLine(dialogueFile, nameManager, dialogueScript.timesInteracted);
-            
+           
+            dialogueReader.scrollTime = 0f;
+            if (dialogue.text == dialogueReader.dialogueLine)
+            {
+                dialogueReader.lineNum++;
+                dialogueReader.ReadLine(dialogueFile, nameManager, dialogueScript.timesInteracted);
+            }
             
            
         }
