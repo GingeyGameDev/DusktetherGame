@@ -532,7 +532,7 @@ MonoBehaviour:
   charName: 
   objectName: desk
   timesInteracted: 0
-  dialogueText: {fileID: 0}
+  dialogueText: {fileID: 4900000, guid: c3dbc1fa5f1df4d48bb506c64414d0cf, type: 3}
 --- !u!114 &1181673072
 MonoBehaviour:
   m_ObjectHideFlags: 0
