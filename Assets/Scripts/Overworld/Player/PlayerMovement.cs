@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
                 anim.SetFloat("horizontalMoveLast", horizontalMovement);
                 anim.SetFloat("verticalMoveLast", 0);
 
-            }  
+            }
 
             if (verticalMovement >= 0.5f || verticalMovement <= -0.5f)
             {
@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             //set animator isMoving
-            if (horizontalMovement >= 0.5f || horizontalMovement <= -0.5f || verticalMovement >= 0.5f || verticalMovement <= -0.5f) 
+            if (horizontalMovement >= 0.5f || horizontalMovement <= -0.5f || verticalMovement >= 0.5f || verticalMovement <= -0.5f)
             {
                 anim.SetBool("isMoving", true);
             }
@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
                 anim.SetBool("isMoving", false);
 
             }
-           
+
 
             playerRb.MovePosition(new Vector2(moveX.x, moveY.y));
 
@@ -80,6 +80,11 @@ public class PlayerMovement : MonoBehaviour
             anim.SetFloat("verticalMove", verticalMovement);
 
 
+        }
+        else 
+        {
+            anim.SetFloat("verticalMove", 0);
+            anim.SetFloat("horizontalMove", 0);
         }
     }
 }

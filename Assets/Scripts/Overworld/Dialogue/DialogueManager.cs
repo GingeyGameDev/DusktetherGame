@@ -79,7 +79,7 @@ public class DialogueManager : MonoBehaviour
 
         {
            
-            dialogueReader.scrollTime = 0f;
+            dialogueReader.scrollTime = 0.01f;
             if (dialogue.text == dialogueReader.dialogueLine)
             {
                 dialogueReader.lineNum++;

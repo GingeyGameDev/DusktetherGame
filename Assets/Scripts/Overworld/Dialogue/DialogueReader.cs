@@ -79,15 +79,23 @@ public class DialogueReader : MonoBehaviour
     public IEnumerator TextScroll(float waitTime) 
     {
         string tempLine = null;
-        for (var i = 0; i <= dialogueLine.Length; i++)
-        {
-            tempLine = dialogueLine.Substring(0, i);        
-            dialogueManager.TextUpdate(tempLine);
-            yield return new WaitForSecondsRealtime(scrollTime);
 
+            for (var i = 0; i <= dialogueLine.Length; i++)
+            {
+                tempLine = dialogueLine.Substring(0, i);
+                dialogueManager.TextUpdate(tempLine);
+                if(scrollTime == .01f) 
+                {
+                    tempLine = dialogueLine;
+                    dialogueManager.TextUpdate(tempLine);
+                    break;
+                }
+                yield return new WaitForSecondsRealtime(scrollTime);
+
+            }
         }
     }
 
-}
+
     
 
