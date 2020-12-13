@@ -10,10 +10,15 @@ public class DialogueManager : MonoBehaviour
 
 
     public TMP_Text dialogue;
+    RectTransform textRect;
     public GameObject textBox;
+
+    public Sprite charTextBox;
+    public Sprite objectTextBox;
 
     PlayerMovement playerMovement;
     Dialogue dialogueScript;
+
     [SerializeField]
     private TextAsset dialogueFile;
     private string nameManager = "";
@@ -25,6 +30,8 @@ public class DialogueManager : MonoBehaviour
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         dialogueReader = FindObjectOfType<DialogueReader>();
         dialogue.text = "";
+
+        textRect = dialogue.gameObject.GetComponent<RectTransform>();
 
     }
 
@@ -45,13 +52,17 @@ public class DialogueManager : MonoBehaviour
         if (dialogueScript.charName != "")
         {
             nameManager = dialogueScript.charName;
+            CharacterDialogue();
+
             Debug.Log(nameManager + "dialogue " + direction);
 
         }
         else if (dialogueScript.objectName != null)
         {
            nameManager = dialogueScript.objectName;
-          //  Debug.Log(nameManager + " dialogue " + direction);
+            ObjectDialogue();
+
+           Debug.Log(nameManager + " dialogue " + direction);
 
         }
         else {nameManager = null;}
@@ -110,4 +121,17 @@ public class DialogueManager : MonoBehaviour
         playerMovement.playerMoveable = true;
     }
 
+    public void CharacterDialogue () 
+    {
+        textBox.GetComponent<Image>().sprite = charTextBox;
+    }
+
+    public void ObjectDialogue() 
+    {
+        textBox.GetComponent<Image>().sprite = objectTextBox;
+
+        
+        textRect.sizeDelta = new Vector2 (666,160);
+
+    }
 }
