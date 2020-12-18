@@ -13,6 +13,8 @@ public class DialogueManager : MonoBehaviour
     RectTransform textRect;
     public GameObject textBox;
 
+    public GameObject characterDialogue;
+
     public Sprite charTextBox;
     public Sprite objectTextBox;
 
@@ -106,9 +108,10 @@ public class DialogueManager : MonoBehaviour
     public IEnumerator DialogueEnd(bool removeOne) 
     {
         Debug.Log("end dialogue");
-        
-        textBox.SetActive(false);
 
+        characterDialogue.SetActive(false);
+        textBox.SetActive(false);
+        
         
         dialogueFile = default;
 
@@ -124,6 +127,12 @@ public class DialogueManager : MonoBehaviour
     public void CharacterDialogue () 
     {
         textBox.GetComponent<Image>().sprite = charTextBox;
+
+        characterDialogue.SetActive(true);
+        characterDialogue.GetComponentInChildren<TMP_Text>().text = nameManager;
+
+        textRect.sizeDelta = new Vector2(545, 80);
+        textRect.anchoredPosition = new Vector2(68, 0);
     }
 
     public void ObjectDialogue() 
@@ -132,6 +141,6 @@ public class DialogueManager : MonoBehaviour
 
         
         textRect.sizeDelta = new Vector2 (666,160);
-
+        textRect.anchoredPosition = new Vector2(0, 0);
     }
 }
