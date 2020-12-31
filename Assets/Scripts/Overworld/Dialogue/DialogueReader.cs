@@ -12,6 +12,7 @@ public class DialogueReader : MonoBehaviour
     public int lineNum = 0;
 
     public float scrollTime;
+    public bool skip;
 
     DialogueManager dialogueManager;
 
@@ -22,7 +23,7 @@ public class DialogueReader : MonoBehaviour
 
     public void ReadLine(TextAsset dialogueFile, string name, int timesInteracted)
     {
-        scrollTime = 0.025f;
+        skip = false;
 
         if (dialogueFile != null)
         {
@@ -82,9 +83,11 @@ public class DialogueReader : MonoBehaviour
 
             for (var i = 0; i <= dialogueLine.Length; i++)
             {
+
+
                 tempLine = dialogueLine.Substring(0, i);
                 dialogueManager.TextUpdate(tempLine);
-                if(scrollTime == .01f) 
+                if(skip) 
                 {
                     tempLine = dialogueLine;
                     dialogueManager.TextUpdate(tempLine);

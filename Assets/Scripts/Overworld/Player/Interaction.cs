@@ -47,6 +47,10 @@ public class Interaction : MonoBehaviour
                         playerMovement.playerMoveable = false;
                         interacted.InteractCheck();
                     }
+                    if (interactable.collider.gameObject.CompareTag("Save")) 
+                    { 
+                    
+                    }
                 }
             }
         }

@@ -7,7 +7,11 @@ public class CameraController : MonoBehaviour
     public GameObject mainCamera;
     public GameObject target;
 
+
     public float followSpeed;
+
+    public Vector2 camMoveMin = default;
+    public Vector2 camMoveMax = default;
 
     PlayerMovement playerMovement;
 
@@ -25,9 +29,26 @@ public class CameraController : MonoBehaviour
 
             if (mainCamera.transform.position != target.transform.position)
             {
-                mainCamera.transform.Translate(new Vector3((target.transform.position.x - mainCamera.transform.position.x), (target.transform.position.y - mainCamera.transform.position.y), 0));
+                DynamicCamera();
             }
         }
+    }
+
+    public void DynamicCamera() 
+    {
+        if (target.transform.position.x >= camMoveMin.x && target.transform.position.x <= camMoveMax.x) 
+        {
+            mainCamera.transform.Translate(new Vector3(target.transform.position.x - mainCamera.transform.position.x, 0.0f, 0.0f));
+
+        }
+
+        if (target.transform.position.y >= camMoveMin.y && target.transform.position.y <= camMoveMax.y)
+        {
+            mainCamera.transform.Translate(new Vector3(0.0f, target.transform.position.y - mainCamera.transform.position.y, 0.0f));
+
+        }
+
+
     }
 
     public void PanCamera(GameObject target) 

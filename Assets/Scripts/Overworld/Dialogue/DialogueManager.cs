@@ -26,7 +26,7 @@ public class DialogueManager : MonoBehaviour
     private string nameManager = "";
     
     
-    // Start is called before the first frame update
+
     void Awake()
     {
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
@@ -37,20 +37,25 @@ public class DialogueManager : MonoBehaviour
 
     }
 
+    //gets all important info for reading a line
     public void GetDialogue(string direction, GameObject interactedObject)
     {
-        playerMovement.playerMoveable = false;
 
-
+        //get the dialogue script off of the interacted object
         dialogueScript = interactedObject.GetComponentInParent<Dialogue>();
         dialogueFile = dialogueScript.dialogueText;
+
+        //activate text box and child gameobjects
         textBox.SetActive(true);
 
+
+        //debug: if someone made an oopsie and entered names in both places
         if (dialogueScript.charName != "" && dialogueScript.objectName != "")
         {
             Debug.Log("Incorrect Interaction Name Inputted");
         }
 
+        //if name is inputted in the character slot, the function for the character dialogue is called
         if (dialogueScript.charName != "")
         {
             nameManager = dialogueScript.charName;
@@ -59,6 +64,8 @@ public class DialogueManager : MonoBehaviour
             Debug.Log(nameManager + "dialogue " + direction);
 
         }
+
+        //if name is inputted in the object slot, the function for the object dialogue is called
         else if (dialogueScript.objectName != null)
         {
            nameManager = dialogueScript.objectName;
@@ -67,18 +74,23 @@ public class DialogueManager : MonoBehaviour
            Debug.Log(nameManager + " dialogue " + direction);
 
         }
+
+        //debug
+        //if no name is entered, set to null
         else {nameManager = null;}
-
-
+        //if no dialogue file is found
         if (dialogueFile == null) { Debug.Log("file missing manager"); }
 
 
+
+        //starts the reading of the file with the name and the times interacted
         dialogueReader.ReadLine(dialogueFile, nameManager, dialogueScript.timesInteracted);
         
 
 
     }
 
+    //updates the text to the dialogue line
     public void TextUpdate(string tempLine) 
     {
         dialogue.text = tempLine;
@@ -87,12 +99,14 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        
+        //if the confirm button is pressed, make the reader speed up to finish line
+        //goes to next line if the line is finished
+
         if (playerMovement.playerMoveable == false && Input.GetButtonDown("confirm"))
 
         {
-           
-            dialogueReader.scrollTime = 0.01f;
+
+            dialogueReader.skip = true;
             if (dialogue.text == dialogueReader.dialogueLine)
             {
                 dialogueReader.lineNum++;
@@ -100,11 +114,12 @@ public class DialogueManager : MonoBehaviour
             }
             
            
-        }
+        } 
      
         
     }
 
+    //called to close the dialogue
     public IEnumerator DialogueEnd(bool removeOne) 
     {
         Debug.Log("end dialogue");

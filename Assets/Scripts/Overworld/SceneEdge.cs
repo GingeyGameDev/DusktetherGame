@@ -5,20 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class SceneEdge : MonoBehaviour
 {
+    //[SerializeField]
+    public string nextScene;
+
     [SerializeField]
-    private string nextScene;
+    private string scenePosition = "";
+    public float sceneMoveAmount;
 
-    [SerializeField] 
-    private Vector2 scenePosition;
+    private GameObject mainCam;
+    private GameObject player;
 
+    CameraController cameraControl;
 
-    public GameObject mainCam;
-    public GameObject player;
+    [SerializeField]
+    private Vector2 camMoveMin, camMoveMax;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        cameraControl = FindObjectOfType<CameraController>();
+
+        mainCam = cameraControl.gameObject;
     }
     
     
@@ -35,19 +44,47 @@ public class SceneEdge : MonoBehaviour
     {
         string previousScene = SceneManager.GetActiveScene().name;
 
-        DontDestroyOnLoad(gameObject);
 
-        SceneManager.LoadScene(nextScene);
+        AsyncOperation loadNewScene = SceneManager.LoadSceneAsync(nextScene, LoadSceneMode.Additive);
+        while (!loadNewScene.isDone) 
+        {
+            yield return null;
+        }
 
-       // yield return new WaitUntil(SceneManager.
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(nextScene));
+        if (scenePosition == "left")
+        {
+            player.transform.Translate(new Vector3(-sceneMoveAmount, 0.0f, 0.0f));
 
+        } else if (scenePosition == "right")
+           {
+            player.transform.Translate(new Vector3(sceneMoveAmount, 0.0f, 0.0f));
+
+           } else if (scenePosition == "up")
+                {
+                  player.transform.Translate(new Vector3(0.0f, sceneMoveAmount, 0.0f));
+
+                } else if (scenePosition == "down")
+                    {
+                       player.transform.Translate(new Vector3(0.0f, -sceneMoveAmount, 0.0f));
+
+                    } else 
+                        {
+            Debug.Log("Setup Error: SceneEdge \n | missing scenePosition");
+
+                        }
         
 
-        Instantiate(player, scenePosition, Quaternion.identity);
-        Instantiate(mainCam, scenePosition, Quaternion.identity);
 
-        yield return new WaitForSeconds(1);
+        SceneManager.MoveGameObjectToScene(player, SceneManager.GetSceneByName(nextScene));
+        SceneManager.MoveGameObjectToScene(mainCam, SceneManager.GetSceneByName(nextScene));
+
+        cameraControl.camMoveMin = camMoveMin;
+        cameraControl.camMoveMax = camMoveMax;
+
+        Debug.Log("object moved");
+
+
+
 
         SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName(previousScene));
 
