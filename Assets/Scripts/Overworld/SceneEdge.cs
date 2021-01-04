@@ -18,7 +18,7 @@ public class SceneEdge : MonoBehaviour
     CameraController cameraControl;
 
     [SerializeField]
-    private Vector2 camMoveMin, camMoveMax;
+    private Vector2 camMoveMin = new Vector2(0,0), camMoveMax = new Vector2(0,0);
 
     // Start is called before the first frame update
     void Start()

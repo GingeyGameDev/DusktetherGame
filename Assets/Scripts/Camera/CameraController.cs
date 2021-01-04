@@ -36,6 +36,8 @@ public class CameraController : MonoBehaviour
 
     public void DynamicCamera() 
     {
+        target = playerMovement.gameObject;
+
         if (target.transform.position.x >= camMoveMin.x && target.transform.position.x <= camMoveMax.x) 
         {
             mainCamera.transform.Translate(new Vector3(target.transform.position.x - mainCamera.transform.position.x, 0.0f, 0.0f));

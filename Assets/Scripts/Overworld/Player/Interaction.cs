@@ -2,7 +2,7 @@
 
 public class Interaction : MonoBehaviour
 {
-   public GameObject playerObject;
+   private GameObject playerObject;
    private Animator anim;
 
     public float interactableDistance;
@@ -17,6 +17,8 @@ public class Interaction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerObject = GameObject.FindGameObjectWithTag("Player");
+
         playerMovement = playerObject.GetComponent<PlayerMovement>();
         anim = playerObject.GetComponent<Animator>();
         interacted = FindObjectOfType<Interacted>();

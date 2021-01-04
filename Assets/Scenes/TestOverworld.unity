@@ -790,11 +790,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6556176518695985670, guid: 82f564f260c43a7429b8438c32e4f205, type: 3}
       propertyPath: m_SortingLayerID
-      value: -1769813835
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6556176518695985670, guid: 82f564f260c43a7429b8438c32e4f205, type: 3}
       propertyPath: m_SortingLayer
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6779781078686510121, guid: 82f564f260c43a7429b8438c32e4f205, type: 3}
       propertyPath: m_LocalPosition.y
@@ -968,6 +968,7 @@ GameObject:
   - component: {fileID: 1873733921}
   - component: {fileID: 1873733920}
   - component: {fileID: 1873733919}
+  - component: {fileID: 1873733923}
   - component: {fileID: 1873733918}
   m_Layer: 0
   m_Name: Character Test
@@ -975,9 +976,9 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!58 &1873733918
-CircleCollider2D:
+  m_IsActive: 1
+--- !u!70 &1873733918
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -989,9 +990,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.1
+  m_Offset: {x: 0, y: -0.85}
+  m_Size: {x: 0.93, y: 0.3}
+  m_Direction: 1
 --- !u!114 &1873733919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1004,11 +1005,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1082451c302b0dc41963731fd1e6ba67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charName: test
+  charName: Catholomeow
   objectName: 
   Charanimation: {fileID: 0}
   timesInteracted: 0
-  dialogueText: {fileID: 4900000, guid: 5989de353cff40248a588c16bf87d575, type: 3}
+  dialogueText: {fileID: 4900000, guid: 9add4a390c82f324ab13b4e0d43d7a51, type: 3}
 --- !u!114 &1873733920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1061,12 +1062,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 45a9d06c9e1ebe246a3e981319f768c1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1080,12 +1081,24 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1873733917}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -29.71, z: 9.33}
-  m_LocalScale: {x: 3.58, y: 3.27, z: 1}
+  m_LocalPosition: {x: 0.997, y: -28.989, z: 9.33}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1873733923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873733917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8125b16b6cc3b164e8bce8da02afc4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1978045752
 GameObject:
   m_ObjectHideFlags: 0
@@ -1256,6 +1269,7 @@ GameObject:
   - component: {fileID: 2080146036}
   - component: {fileID: 2080146037}
   - component: {fileID: 2080146038}
+  - component: {fileID: 2080146039}
   m_Layer: 0
   m_Name: lamp
   m_TagString: Interactable
@@ -1378,11 +1392,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1082451c302b0dc41963731fd1e6ba67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charName: Lamp1
-  objectName: 
+  charName: 
+  objectName: Lamp1
   Charanimation: {fileID: 0}
   timesInteracted: 0
   dialogueText: {fileID: 4900000, guid: 79d5a06da86f53545bdde9e293cd1d82, type: 3}
+--- !u!114 &2080146039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080146033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8125b16b6cc3b164e8bce8da02afc4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2117581265
 GameObject:
   m_ObjectHideFlags: 0
@@ -1751,6 +1777,10 @@ PrefabInstance:
     - target: {fileID: 6920531414531149764, guid: 2c61842424abe10439e771ea2318be85, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920531414531149765, guid: 2c61842424abe10439e771ea2318be85, type: 3}
+      propertyPath: m_Size.x
+      value: 0.76
       objectReference: {fileID: 0}
     - target: {fileID: 6920531414531149769, guid: 2c61842424abe10439e771ea2318be85, type: 3}
       propertyPath: m_Name
