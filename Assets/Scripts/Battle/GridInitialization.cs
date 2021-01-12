@@ -26,27 +26,33 @@ public class GridInitialization : MonoBehaviour
     }
     public void InitializeGrid() 
     {
-        gridLocation = new Vector3(-1, 1, 0);
+        gridLocation = new Vector3(-1, -1, 0);
 
         for (gridNum.x = 1; gridNum.x <= sizeX; gridNum.x++) 
         {
             gridLocation.x += 2;
-            gridLocation.y = 1;
+            gridLocation.y = -1;
 
               for (gridNum.y = 1; gridNum.y <= sizeY; gridNum.y++) 
               {
-                   
-                 gridLocation.y -= 2;
 
-                  GameObject tempGameObject;
+                gridLocation.y += 2;
+
+                GameObject tempGameObject;
                   tempGameObject = Instantiate (gridTile, gridLocation, Quaternion.identity);
 
                   gridTiles.Add(tempGameObject);
                   gridTiles[gridTiles.Count - 1].name = (gridNum.x.ToString() + " " + gridNum.y.ToString());
 
+                gridTiles[gridTiles.Count - 1].transform.SetParent(GameObject.Find(gridNum.x.ToString() + " " +  "1").transform);
+
+
                 //  Debug.Log("grid tile" + gridNum.x + gridNum.y + "Instantiated");
 
-           } 
+                
+            }
+
+            GameObject.Find(gridNum.x.ToString() + " " + "1").transform.SetParent(gameObject.transform);
         }
 
         //enemy initializing
@@ -70,13 +76,19 @@ public class GridInitialization : MonoBehaviour
 
         //enemy centering
 
-        if (enemies.Count >= 1) 
+        if (enemies.Count > 1)
         {
-            for (int i = 0; i < enemies.Count; i++) 
+            for (int i = 0; i < enemies.Count; i++)
             {
-                enemies[i].transform.Translate(new Vector3( (((sizeX * 2) / enemies.Count) * (i + 1) -1 ), 0.0f, 0.0f));
+                enemies[i].transform.Translate(new Vector3((((sizeX * 2) / enemies.Count) * (i + 1) - 1), 0.0f, 0.0f));
             }
         }
+        else 
+        {
+            enemies[0].transform.Translate(new Vector3(sizeX, sizeY * 2, 0.0f));
+        }
+
+        FindObjectOfType<Camera>().gameObject.transform.Translate(new Vector3(sizeX, sizeY + 2, 0.0f));
     }
 
 
