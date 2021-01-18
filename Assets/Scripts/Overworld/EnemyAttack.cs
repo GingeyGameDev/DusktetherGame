@@ -52,7 +52,9 @@ public class EnemyAttack : MonoBehaviour
         //move player centered and disable movement
         
         playerMovement.playerMoveable = false;
-        yield return new WaitForSecondsRealtime(2);
+
+
+        yield return new WaitForSecondsRealtime(0);
 
         asyncLoad.allowSceneActivation = true;
         

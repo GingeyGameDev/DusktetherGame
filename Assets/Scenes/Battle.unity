@@ -316,10 +316,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2684516927ea14398756e46a58f0f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeX: 3
-  sizeY: 3
+  sizeX: 5
+  sizeY: 5
   gridNum: {x: 0, y: 0}
   gridTile: {fileID: 8996225343454713783, guid: b195d07e5ab0e9841900fdfc850c5cad, type: 3}
+  gridTiles: []
   enemies: []
   gridTileSprites: []
 --- !u!4 &1140869976

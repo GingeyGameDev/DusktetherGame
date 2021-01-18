@@ -61,7 +61,7 @@ public class DialogueManager : MonoBehaviour
             nameManager = dialogueScript.charName;
             CharacterDialogue();
 
-            Debug.Log(nameManager + "dialogue " + direction);
+           // Debug.Log(nameManager + "dialogue " + direction);
 
         }
 
@@ -122,7 +122,7 @@ public class DialogueManager : MonoBehaviour
     //called to close the dialogue
     public IEnumerator DialogueEnd(bool removeOne) 
     {
-        Debug.Log("end dialogue");
+        //Debug.Log("end dialogue");
 
         characterDialogue.SetActive(false);
         textBox.SetActive(false);
@@ -158,4 +158,14 @@ public class DialogueManager : MonoBehaviour
         textRect.sizeDelta = new Vector2 (666,160);
         textRect.anchoredPosition = new Vector2(0, 0);
     }
+
+
+    //emotions
+
+    public void Emotions(string emotion) 
+    { 
+    
+    }
+
+
 }

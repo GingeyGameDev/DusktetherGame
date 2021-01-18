@@ -33,7 +33,7 @@ public class DialogueReader : MonoBehaviour
             dialogueStartLine = dialogueFile.text.IndexOf('<' + name + '-' + timesInteracted + '>');
 
 
-          Debug.Log('<' + name + '-' + timesInteracted + '>');
+          //Debug.Log('<' + name + '-' + timesInteracted + '>');
 
             string dialogueBlock = null;
 
@@ -54,6 +54,13 @@ public class DialogueReader : MonoBehaviour
                 ReadLine(dialogueFile, name, timesInteracted);
             }
 
+            if (dialogueLine.StartsWith("<eh>")) 
+            { 
+            
+            }
+
+            
+
             if (dialogueLine == "<rl>") 
             {
                 lineNum++;
@@ -61,7 +68,7 @@ public class DialogueReader : MonoBehaviour
                 dialogueManager.StartCoroutine("DialogueEnd", true);
             }
 
-            Debug.Log(dialogueLine);
+         //   Debug.Log(dialogueLine);
 
 
             if (dialogueLine == "<el>")

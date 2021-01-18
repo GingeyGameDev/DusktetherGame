@@ -6,11 +6,14 @@ public class GridInitialization : MonoBehaviour
 {
     public int sizeX, sizeY;
 
+    [HideInInspector]
     public Vector2 gridNum;
     private Vector3 gridLocation;
 
     public GameObject gridTile;
-    List<GameObject> gridTiles = new List<GameObject>();
+
+    [HideInInspector]
+    public List<GameObject> gridTiles = new List<GameObject>();
 
     public List<GameObject> enemies = new List<GameObject>();
   
@@ -18,8 +21,12 @@ public class GridInitialization : MonoBehaviour
     [SerializeField]
     public Sprite[] gridTileSprites;
 
+    Enemy enemy;
+
     private void Start()
     {
+        
+
         InitializeGrid();
 
         
@@ -64,8 +71,6 @@ public class GridInitialization : MonoBehaviour
             {
 
                 enemies.Add(GameObject.FindGameObjectsWithTag("enemy")[enemy]);
-
-                Debug.Log(enemies[0].name);
                 
             }
         }
