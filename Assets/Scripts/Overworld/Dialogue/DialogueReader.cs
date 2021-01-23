@@ -15,15 +15,17 @@ public class DialogueReader : MonoBehaviour
     public bool skip;
 
     DialogueManager dialogueManager;
+    FaceEmotion faceEmotion;
 
     private void Start()
     {
-        dialogueManager = FindObjectOfType<DialogueManager>();
+        dialogueManager = gameObject.GetComponent<DialogueManager>();
+        faceEmotion = gameObject.GetComponent<FaceEmotion>();
     }
 
     public void ReadLine(TextAsset dialogueFile, string name, int timesInteracted)
     {
-        skip = false;
+
 
         if (dialogueFile != null)
         {
@@ -33,60 +35,84 @@ public class DialogueReader : MonoBehaviour
             dialogueStartLine = dialogueFile.text.IndexOf('<' + name + '-' + timesInteracted + '>');
 
 
-          //Debug.Log('<' + name + '-' + timesInteracted + '>');
+            //Debug.Log('<' + name + '-' + timesInteracted + '>');
 
             string dialogueBlock = null;
 
-            dialogueBlock = dialogueFile.text.Substring(dialogueStartLine, (dialogueFile.text.IndexOf(("<el>"), dialogueStartLine)-dialogueStartLine + 4));
+            dialogueBlock = dialogueFile.text.Substring(dialogueStartLine, (dialogueFile.text.IndexOf(("<el>"), dialogueStartLine) - dialogueStartLine + 4));
 
             lines = dialogueBlock.Split('\n');
 
 
             lines[lineNum] = lines[lineNum].Trim(' ', '\n', '\r');
 
-            
+
 
             dialogueLine = lines[lineNum];
+
+            if (dialogueLine.StartsWith("<fh>"))
+            {
+
+                dialogueLine = lines[lineNum].Substring(4, dialogueLine.Length - 4);
+
+                faceEmotion.Emotion("happy");
+
+            } else if (dialogueLine.StartsWith("<fs>"))
+            {
+                dialogueLine = lines[lineNum].Substring(4, dialogueLine.Length - 4);
+
+                faceEmotion.Emotion("sad");
+            }
+
+
 
             if (dialogueLine == ('<' + name + '-' + timesInteracted + '>'))
             {
                 lineNum++;
                 ReadLine(dialogueFile, name, timesInteracted);
+
             }
+            else{ 
 
-            if (dialogueLine.StartsWith("<eh>")) 
-            { 
-            
+
+
+
+                if (dialogueLine == "<rl>")
+                {
+                    lineNum++;
+
+                    dialogueManager.StartCoroutine("DialogueEnd", true);
+                }
+
+                //   Debug.Log(dialogueLine);
+
+
+                if (dialogueLine == "<el>")
+                {
+                    dialogueManager.StartCoroutine("DialogueEnd", false);
+                }
+
+
+                StartCoroutine(TextScroll(scrollTime));
+
+
             }
-
-            
-
-            if (dialogueLine == "<rl>") 
-            {
-                lineNum++;
-
-                dialogueManager.StartCoroutine("DialogueEnd", true);
-            }
-
-         //   Debug.Log(dialogueLine);
-
-
-            if (dialogueLine == "<el>")
-            {
-                dialogueManager.StartCoroutine("DialogueEnd", false);
-            }
-
-            StartCoroutine("TextScroll", scrollTime);
-            
-        }
-        else 
-        {
-            Debug.Log("Dialogue file is null");
-        }
+    }
+    else 
+    {
+       Debug.Log("Dialogue file is null");
+    }
     }
     public IEnumerator TextScroll(float waitTime) 
     {
+       
+
+        dialogueManager.lineStartTime = Time.time;
+
         string tempLine = null;
+
+        faceEmotion.lineEnded = false;
+
 
             for (var i = 0; i <= dialogueLine.Length; i++)
             {
@@ -94,17 +120,24 @@ public class DialogueReader : MonoBehaviour
 
                 tempLine = dialogueLine.Substring(0, i);
                 dialogueManager.TextUpdate(tempLine);
-                if(skip) 
+            if (skip) 
                 {
                     tempLine = dialogueLine;
                     dialogueManager.TextUpdate(tempLine);
+                
                     break;
+                
                 }
-                yield return new WaitForSecondsRealtime(scrollTime);
-
-            }
+            
+            yield return new WaitForSecondsRealtime(scrollTime);
+           
         }
+        skip = false;
+
+
+        faceEmotion.lineEnded = true;
     }
+}
 
 
     

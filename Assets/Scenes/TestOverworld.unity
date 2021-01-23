@@ -377,6 +377,7 @@ GameObject:
   - component: {fileID: 633147495}
   - component: {fileID: 633147496}
   - component: {fileID: 633147494}
+  - component: {fileID: 633147497}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -409,7 +410,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 633147493}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.2827952, y: -30.449451, z: -1388.308}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -433,6 +434,26 @@ MonoBehaviour:
   charTextBox: {fileID: 21300000, guid: 096627c7df8fe4148a0a587a06e485ac, type: 3}
   objectTextBox: {fileID: 21300000, guid: 58fd0c28d53d130459dd199d46a1029e, type: 3}
   dialogueFile: {fileID: 4900000, guid: c3dbc1fa5f1df4d48bb506c64414d0cf, type: 3}
+  lineStartTime: 0
+  InputWaitTime: 0
+--- !u!114 &633147497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633147493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27dea24530eb944db40b2474f4310ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  face: {fileID: 2016251709}
+  faceRenderer: {fileID: 0}
+  faceSprites: []
+  choosenFrame: 0
+  animationTime: 0.5
+  lineEnded: 0
 --- !u!1 &931336359 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8951890479136356762, guid: 82f564f260c43a7429b8438c32e4f205, type: 3}
@@ -452,7 +473,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: 
   objectName: doubleDesk1
-  Charanimation: {fileID: 0}
+  faceSprites: []
   timesInteracted: 0
   dialogueText: {fileID: 4900000, guid: 79d5a06da86f53545bdde9e293cd1d82, type: 3}
 --- !u!114 &931336364
@@ -620,7 +641,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: 
   objectName: desk
-  Charanimation: {fileID: 0}
+  faceSprites: []
   timesInteracted: 0
   dialogueText: {fileID: 4900000, guid: c3dbc1fa5f1df4d48bb506c64414d0cf, type: 3}
 --- !u!114 &1181673072
@@ -666,7 +687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: 
   objectName: doubleDesk1
-  Charanimation: {fileID: 0}
+  faceSprites: []
   timesInteracted: 0
   dialogueText: {fileID: 4900000, guid: 79d5a06da86f53545bdde9e293cd1d82, type: 3}
 --- !u!1001 &1294828060
@@ -987,7 +1008,7 @@ GameObject:
   - component: {fileID: 1873733923}
   - component: {fileID: 1873733918}
   m_Layer: 0
-  m_Name: Character Test
+  m_Name: Catholomeow
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1023,7 +1044,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: Catholomeow
   objectName: 
-  Charanimation: {fileID: 0}
+  faceSprites:
+  - {fileID: -5501747581744030, guid: 38db29c0ce90eb74fb901f8569dc6d79, type: 3}
+  - {fileID: -8297106237744030831, guid: 38db29c0ce90eb74fb901f8569dc6d79, type: 3}
+  - {fileID: -4806874418892074137, guid: 38db29c0ce90eb74fb901f8569dc6d79, type: 3}
+  - {fileID: -3154753323098890675, guid: 38db29c0ce90eb74fb901f8569dc6d79, type: 3}
+  - {fileID: -8365304145211443297, guid: 38db29c0ce90eb74fb901f8569dc6d79, type: 3}
+  - {fileID: 4215274665419961419, guid: 38db29c0ce90eb74fb901f8569dc6d79, type: 3}
   timesInteracted: 0
   dialogueText: {fileID: 4900000, guid: 9add4a390c82f324ab13b4e0d43d7a51, type: 3}
 --- !u!114 &1873733920
@@ -1208,9 +1235,8 @@ GameObject:
   - component: {fileID: 2016251710}
   - component: {fileID: 2016251712}
   - component: {fileID: 2016251711}
-  - component: {fileID: 2016251713}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1255,8 +1281,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5501747581744030, guid: 38db29c0ce90eb74fb901f8569dc6d79, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1273,25 +1299,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2016251709}
   m_CullTransparentMesh: 0
---- !u!95 &2016251713
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2016251709}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 92062c813d699ff4d80ed3f66079ccfa, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2080146033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1430,7 +1437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: 
   objectName: Lamp1
-  Charanimation: {fileID: 0}
+  faceSprites: []
   timesInteracted: 0
   dialogueText: {fileID: 4900000, guid: 79d5a06da86f53545bdde9e293cd1d82, type: 3}
 --- !u!114 &2080146039
