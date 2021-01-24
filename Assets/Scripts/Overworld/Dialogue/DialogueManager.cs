@@ -8,6 +8,7 @@ public class DialogueManager : MonoBehaviour
 
     DialogueReader dialogueReader;
 
+    public bool skipable;
 
     public TMP_Text dialogue;
     RectTransform textRect;
@@ -42,7 +43,7 @@ public class DialogueManager : MonoBehaviour
 
         textRect = dialogue.gameObject.GetComponent<RectTransform>();
 
-        
+        skipable = true;
 
         
 
@@ -84,7 +85,7 @@ public class DialogueManager : MonoBehaviour
            nameManager = dialogueScript.objectName;
             ObjectDialogue();
 
-           Debug.Log(nameManager + " dialogue " + direction);
+           //Debug.Log(nameManager + " dialogue " + direction);
 
         }
 
@@ -138,16 +139,17 @@ public class DialogueManager : MonoBehaviour
 
     void Update() 
     {
-        if (Input.GetButtonDown("confirm") && (Time.time > (lineStartTime + InputWaitTime))) 
+        if (Input.GetButtonDown("confirm") && (Time.time > (lineStartTime + InputWaitTime)) && playerMovement.playerMoveable == false && skipable) 
         {
             if (dialogue.text != dialogueReader.dialogueLine)
             {
-
+                dialogueReader.StopCoroutine("TextScroll");
                 dialogueReader.skip = true;
                
             }
-            else 
+            else if (dialogue.text == dialogueReader.dialogueLine && Time.time > (lineStartTime + (InputWaitTime * 2)))
             {
+                dialogueReader.skip = false;
                 dialogueReader.lineNum++;
                 dialogueReader.ReadLine(dialogueFile, nameManager, dialogueScript.timesInteracted);
             }

@@ -1,5 +1,10 @@
 <Catholomeow-0>
-<fh>Indubitably.
-<fs>Indubitably'nt?
+<fh>Indubitably
+<fs>Indubitablyn't?
+<fa>INDUBITABLY!
+<fs1>Indubitably?
+<fs2>Indubitablyn't?
+<fs3>In-dub-it-ably?
 <rl>
 <el>
+

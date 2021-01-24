@@ -33,15 +33,49 @@ public class FaceEmotion : MonoBehaviour
 
         if (emotion == "happy")
         {
-            // StartCoroutine(EmotionsAnimator(0));
-            faceRenderer.sprite = faceSprites[0];
+          //  faceRenderer.sprite = faceSprites[0];
+             StartCoroutine(EmotionsAnimator(0,1));
+            Debug.Log("happy");
         }
-        else if (emotion == "sad") 
+            else if (emotion == "sad")
             {
-            faceRenderer.sprite = faceSprites[1];
+              //  faceRenderer.sprite = faceSprites[1];
 
-            // StartCoroutine(EmotionsAnimator(1));
-        }
+                 StartCoroutine(EmotionsAnimator(2,3));
+                Debug.Log("sad");
+            }
+                else if (emotion == "angry")
+                {
+                  //  faceRenderer.sprite = faceSprites[2];
+
+                     StartCoroutine(EmotionsAnimator(4,5));
+                     Debug.Log("angry");
+
+                }
+                    else if (emotion == "special1")
+                    {
+                       // faceRenderer.sprite = faceSprites[3];
+
+                         StartCoroutine(EmotionsAnimator(6,7));
+
+
+                    }
+                        else if (emotion == "special2")
+                        {
+                          //  faceRenderer.sprite = faceSprites[4];
+
+                             StartCoroutine(EmotionsAnimator(8,9));
+
+
+                        }
+                            else if (emotion == "special3")
+                            {
+                               // faceRenderer.sprite = faceSprites[5];
+
+                                 StartCoroutine(EmotionsAnimator(10,11));
+
+
+                            }
 
 
     }
@@ -65,7 +99,9 @@ public class FaceEmotion : MonoBehaviour
             yield return new WaitForSeconds(animationTime);
         }
 
-        
+       // faceRenderer.sprite = faceSprites[frame1];
+
+        StopCoroutine(EmotionsAnimator(0,0));
 
     }
 }

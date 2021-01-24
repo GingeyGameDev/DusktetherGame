@@ -28,7 +28,9 @@ public class Interaction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerMovement.playerMoveable != false) 
+        Debug.DrawLine((Vector2)transform.position - new Vector2(0.0f, .87f), ((Vector2)transform.position - new Vector2(0.0f, .87f)) + (interactableDistance * dirOffSet), Color.red);
+
+        if (playerMovement.playerMoveable != false) 
         {
             if (Input.GetButtonDown("confirm"))
             {
@@ -39,15 +41,19 @@ public class Interaction : MonoBehaviour
                 interactable = Physics2D.Raycast((Vector2)transform.position - new Vector2(0.0f, .87f), dirOffSet, interactableDistance);
 
                 //use for debug purposes
-                // Debug.DrawLine((Vector2)transform.position - new Vector2(0.0f,.87f), ((Vector2)transform.position - new Vector2(0.0f, .87f)) + (interactableDistance * dirOffset), Color.red);
+                 
 
                 if (interactable.collider != null)
                 {
+
+                    Debug.Log("interacted");
                     //sets the interact bool for scripts that need it if the gameobject has the interactable tag
                     if (interactable.collider.gameObject.CompareTag("Interactable"))
                     {
                         playerMovement.playerMoveable = false;
                         interacted.InteractCheck();
+                        
+                       
                     }
                     if (interactable.collider.gameObject.CompareTag("Save")) 
                     { 

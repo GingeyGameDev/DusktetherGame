@@ -428,6 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 676b786642ed4a9479415ceffab319a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skipable: 0
   dialogue: {fileID: 1170048356}
   textBox: {fileID: 495114867}
   characterDialogue: {fileID: 457829439}
@@ -435,7 +436,7 @@ MonoBehaviour:
   objectTextBox: {fileID: 21300000, guid: 58fd0c28d53d130459dd199d46a1029e, type: 3}
   dialogueFile: {fileID: 4900000, guid: c3dbc1fa5f1df4d48bb506c64414d0cf, type: 3}
   lineStartTime: 0
-  InputWaitTime: 0
+  InputWaitTime: 0.1
 --- !u!114 &633147497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,7 +453,7 @@ MonoBehaviour:
   faceRenderer: {fileID: 0}
   faceSprites: []
   choosenFrame: 0
-  animationTime: 0.5
+  animationTime: 0.1
   lineEnded: 0
 --- !u!1 &931336359 stripped
 GameObject:
@@ -1045,12 +1046,18 @@ MonoBehaviour:
   charName: Catholomeow
   objectName: 
   faceSprites:
-  - {fileID: -5501747581744030, guid: 38db29c0ce90eb74fb901f8569dc6d79, type: 3}
-  - {fileID: -8297106237744030831, guid: 38db29c0ce90eb74fb901f8569dc6d79, type: 3}
-  - {fileID: -4806874418892074137, guid: 38db29c0ce90eb74fb901f8569dc6d79, type: 3}
-  - {fileID: -3154753323098890675, guid: 38db29c0ce90eb74fb901f8569dc6d79, type: 3}
-  - {fileID: -8365304145211443297, guid: 38db29c0ce90eb74fb901f8569dc6d79, type: 3}
-  - {fileID: 4215274665419961419, guid: 38db29c0ce90eb74fb901f8569dc6d79, type: 3}
+  - {fileID: 6925477704491239415, guid: b9f60d5b8caf66f498c67eb669226087, type: 3}
+  - {fileID: -3345516780775478273, guid: b9f60d5b8caf66f498c67eb669226087, type: 3}
+  - {fileID: 873051275806637317, guid: b9f60d5b8caf66f498c67eb669226087, type: 3}
+  - {fileID: -7424308015304261228, guid: b9f60d5b8caf66f498c67eb669226087, type: 3}
+  - {fileID: -1859231943112197186, guid: b9f60d5b8caf66f498c67eb669226087, type: 3}
+  - {fileID: 1522505182043786970, guid: b9f60d5b8caf66f498c67eb669226087, type: 3}
+  - {fileID: -4297096331298966049, guid: b9f60d5b8caf66f498c67eb669226087, type: 3}
+  - {fileID: 436494125525977204, guid: b9f60d5b8caf66f498c67eb669226087, type: 3}
+  - {fileID: -7707887835152263463, guid: b9f60d5b8caf66f498c67eb669226087, type: 3}
+  - {fileID: 193146044295351999, guid: b9f60d5b8caf66f498c67eb669226087, type: 3}
+  - {fileID: -5567375653518236655, guid: b9f60d5b8caf66f498c67eb669226087, type: 3}
+  - {fileID: 4291314347664037112, guid: b9f60d5b8caf66f498c67eb669226087, type: 3}
   timesInteracted: 0
   dialogueText: {fileID: 4900000, guid: 9add4a390c82f324ab13b4e0d43d7a51, type: 3}
 --- !u!114 &1873733920
@@ -1777,6 +1784,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6920531414531149761, guid: 2c61842424abe10439e771ea2318be85, type: 3}
+      propertyPath: interactableDistance
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 6920531414531149764, guid: 2c61842424abe10439e771ea2318be85, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.417935

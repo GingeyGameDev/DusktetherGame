@@ -5,13 +5,17 @@ using UnityEngine;
 
 public class DialogueReader : MonoBehaviour
 {
-    
+    [HideInInspector]
     public string[] lines;
 
+    [HideInInspector]
     public string dialogueLine;
+
     public int lineNum = 0;
 
     public float scrollTime;
+
+    [HideInInspector]
     public bool skip;
 
     DialogueManager dialogueManager;
@@ -25,7 +29,7 @@ public class DialogueReader : MonoBehaviour
 
     public void ReadLine(TextAsset dialogueFile, string name, int timesInteracted)
     {
-
+        faceEmotion.lineEnded = false;
 
         if (dialogueFile != null)
         {
@@ -57,12 +61,45 @@ public class DialogueReader : MonoBehaviour
 
                 faceEmotion.Emotion("happy");
 
-            } else if (dialogueLine.StartsWith("<fs>"))
-            {
-                dialogueLine = lines[lineNum].Substring(4, dialogueLine.Length - 4);
-
-                faceEmotion.Emotion("sad");
             }
+                else if (dialogueLine.StartsWith("<fs>"))
+                {
+                    dialogueLine = lines[lineNum].Substring(4, dialogueLine.Length - 4);
+
+                    faceEmotion.Emotion("sad");
+                }
+                    else if (dialogueLine.StartsWith("<fa>")) 
+                    {
+                        dialogueLine = lines[lineNum].Substring(4, dialogueLine.Length - 4);
+
+                        faceEmotion.Emotion("angry");
+
+
+                    }
+                        else if (dialogueLine.StartsWith("<fs1>"))
+                        {
+                            dialogueLine = lines[lineNum].Substring(5, dialogueLine.Length - 5);
+
+                            faceEmotion.Emotion("special1");
+
+
+                        }
+                            else if (dialogueLine.StartsWith("<fs2>"))
+                            {
+                                dialogueLine = lines[lineNum].Substring(5, dialogueLine.Length - 5);
+
+                                faceEmotion.Emotion("special2");
+
+
+                            }
+                                else if (dialogueLine.StartsWith("<fs3>"))
+                                {
+                                    dialogueLine = lines[lineNum].Substring(5, dialogueLine.Length - 5);
+
+                                    faceEmotion.Emotion("special3");
+
+
+                                }
 
 
 
@@ -111,23 +148,23 @@ public class DialogueReader : MonoBehaviour
 
         string tempLine = null;
 
-        faceEmotion.lineEnded = false;
+        
 
 
             for (var i = 0; i <= dialogueLine.Length; i++)
             {
-
-
-                tempLine = dialogueLine.Substring(0, i);
+            if (skip)
+            {
+                tempLine = dialogueLine;
                 dialogueManager.TextUpdate(tempLine);
-            if (skip) 
-                {
-                    tempLine = dialogueLine;
-                    dialogueManager.TextUpdate(tempLine);
-                
-                    break;
-                
-                }
+
+                break;
+
+            }
+
+            tempLine = dialogueLine.Substring(0, i);
+                dialogueManager.TextUpdate(tempLine);
+         
             
             yield return new WaitForSecondsRealtime(scrollTime);
            
