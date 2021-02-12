@@ -134,11 +134,11 @@ public class DialogueReader : MonoBehaviour
 
 
             }
-    }
-    else 
-    {
-       Debug.Log("Dialogue file is null");
-    }
+        }
+            else 
+            {
+               Debug.Log("Dialogue file is null");
+            }
     }
     public IEnumerator TextScroll(float waitTime) 
     {
@@ -157,7 +157,7 @@ public class DialogueReader : MonoBehaviour
             {
                 tempLine = dialogueLine;
                 dialogueManager.TextUpdate(tempLine);
-
+                faceEmotion.lineEnded = true;
                 break;
 
             }

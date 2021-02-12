@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GridInitialization : MonoBehaviour
 {
-    public int sizeX, sizeY;
+    public Vector2 gridSize;
 
     [HideInInspector]
     public Vector2 gridNum;
@@ -35,12 +35,12 @@ public class GridInitialization : MonoBehaviour
     {
         gridLocation = new Vector3(-1, -1, 0);
 
-        for (gridNum.x = 1; gridNum.x <= sizeX; gridNum.x++) 
+        for (gridNum.x = 1; gridNum.x <= gridSize.x; gridNum.x++) 
         {
             gridLocation.x += 2;
             gridLocation.y = -1;
 
-              for (gridNum.y = 1; gridNum.y <= sizeY; gridNum.y++) 
+              for (gridNum.y = 1; gridNum.y <= gridSize.y; gridNum.y++) 
               {
 
                 gridLocation.y += 2;
@@ -85,15 +85,15 @@ public class GridInitialization : MonoBehaviour
         {
             for (int i = 0; i < enemies.Count; i++)
             {
-                enemies[i].transform.Translate(new Vector3((((sizeX * 2) / enemies.Count) * (i + 1) - 1), 0.0f, 0.0f));
+                enemies[i].transform.Translate(new Vector3((((gridSize.x * 2) / enemies.Count) * (i + 1) - 1), 0.0f, 0.0f));
             }
         }
         else 
         {
-            enemies[0].transform.Translate(new Vector3(sizeX, sizeY * 2, 0.0f));
+            enemies[0].transform.Translate(new Vector3(gridSize.x, gridSize.y * 2, 0.0f));
         }
 
-        FindObjectOfType<Camera>().gameObject.transform.Translate(new Vector3(sizeX, sizeY + 2, 0.0f));
+        FindObjectOfType<Camera>().gameObject.transform.Translate(new Vector3(gridSize.x, gridSize.y + 2, 0.0f));
     }
 
 

@@ -4,7 +4,7 @@
 public class PlayerMovement : MonoBehaviour
 {
 
-
+    public static PlayerMovement instance = null;
 
     private Vector2 moveX;
     private Vector2 moveY;
@@ -20,6 +20,18 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        if (instance == null)
+
+
+            instance = this;
+
+
+        else if (instance != this)
+
+
+            Destroy(gameObject);
+
+
         anim = GetComponent<Animator>();
         playerRb = gameObject.GetComponent<Rigidbody2D>();
 

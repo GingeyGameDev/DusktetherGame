@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    public static CameraController instance = null;
+
     public GameObject mainCamera;
     public GameObject target;
 
@@ -18,6 +20,17 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (instance == null)
+
+
+            instance = this;
+
+
+        else if (instance != this)
+
+
+            Destroy(gameObject);
+
         playerMovement = FindObjectOfType<PlayerMovement>();
     }
 

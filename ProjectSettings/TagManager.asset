@@ -9,6 +9,7 @@ TagManager:
   - Scene Edge
   - Save
   - enemy
+  - DataTransfer
   layers:
   - Default
   - TransparentFX

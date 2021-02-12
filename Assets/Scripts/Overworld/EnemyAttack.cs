@@ -14,6 +14,10 @@ public class EnemyAttack : MonoBehaviour
 
     private PlayerMovement playerMovement;
     private PlayerCollision playerCollision;
+    private EnemyDataTransfer enemyDataTransfer;
+    
+    [SerializeField]
+    private Object[] EnemyScripts;
 
     private void Start()
     {
@@ -24,7 +28,9 @@ public class EnemyAttack : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player");
         }
         anim = player.GetComponent<Animator>();
-    
+
+        enemyDataTransfer = FindObjectOfType<EnemyDataTransfer>();
+
 
         //assign scripts to player
         playerCollision = player.GetComponent<PlayerCollision>();
@@ -44,7 +50,7 @@ public class EnemyAttack : MonoBehaviour
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Battle");
         asyncLoad.allowSceneActivation = false;
 
-    
+        enemyDataTransfer.dataTransfer(EnemyScripts);
         
         //bring sprite forward
         enemyAttackSprite.sortingOrder = 1;
@@ -57,6 +63,7 @@ public class EnemyAttack : MonoBehaviour
         yield return new WaitForSecondsRealtime(0);
 
         asyncLoad.allowSceneActivation = true;
+        
         
     }
 

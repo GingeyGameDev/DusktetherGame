@@ -46,7 +46,7 @@ public class Interaction : MonoBehaviour
                 if (interactable.collider != null)
                 {
 
-                    Debug.Log("interacted");
+                   
                     //sets the interact bool for scripts that need it if the gameobject has the interactable tag
                     if (interactable.collider.gameObject.CompareTag("Interactable"))
                     {

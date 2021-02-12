@@ -35,21 +35,21 @@ public class FaceEmotion : MonoBehaviour
         {
           //  faceRenderer.sprite = faceSprites[0];
              StartCoroutine(EmotionsAnimator(0,1));
-            Debug.Log("happy");
+            
         }
             else if (emotion == "sad")
             {
               //  faceRenderer.sprite = faceSprites[1];
 
                  StartCoroutine(EmotionsAnimator(2,3));
-                Debug.Log("sad");
+               
             }
                 else if (emotion == "angry")
                 {
                   //  faceRenderer.sprite = faceSprites[2];
 
                      StartCoroutine(EmotionsAnimator(4,5));
-                     Debug.Log("angry");
+                     
 
                 }
                     else if (emotion == "special1")
@@ -96,6 +96,12 @@ public class FaceEmotion : MonoBehaviour
 
                 
             }
+
+            if (lineEnded) 
+            {
+                yield break;
+            }
+
             yield return new WaitForSeconds(animationTime);
         }
 

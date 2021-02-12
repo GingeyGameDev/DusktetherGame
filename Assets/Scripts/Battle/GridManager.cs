@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
+
+    GridInitialization gridInitializer;
+
+    public List<GameObject> gridSpaces = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
-        
+        gridInitializer = gameObject.GetComponent<GridInitialization>();
+
+        gridSpaces = gridInitializer.gridTiles;
     }
 
     // Update is called once per frame
