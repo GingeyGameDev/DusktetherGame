@@ -16,6 +16,11 @@ public class GridManager : MonoBehaviour
         gridSpaces = gridInitializer.gridTiles;
     }
 
+    public void gridAttack(int round) 
+    { 
+    
+    }
+
     // Update is called once per frame
     void Update()
     {

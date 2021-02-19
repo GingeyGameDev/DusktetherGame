@@ -7,13 +7,16 @@ public class Enemy : ScriptableObject
 {
 
     [SerializeField]
-    private string enemyName;
+    private string enemyName = "You Shouldn't See This";
 
     [SerializeField]
-    private Vector2 gridSize;
+    private bool boss = false;
 
     [SerializeField]
-    private Vector2 playerStartPosition;
+    private Vector2 gridSize = new Vector2 (1,1);
+
+    [SerializeField]
+    private Vector2 playerStartPosition = new Vector2 (1,1);
 
     [SerializeField]
     private List<Object> attacks = new List<Object>();
@@ -22,7 +25,7 @@ public class Enemy : ScriptableObject
     private Object attackOrder;
 
     [SerializeField]
-    private TextAsset dialogueFiles;
+    private TextAsset dialogueFiles = null;
 
 
     public string EnemyName
@@ -30,6 +33,14 @@ public class Enemy : ScriptableObject
         get
         {
             return enemyName;
+        }
+    }
+
+    public bool bossFight 
+    {
+        get
+        {
+            return boss; 
         }
     }
 

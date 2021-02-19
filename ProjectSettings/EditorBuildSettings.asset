@@ -18,4 +18,4 @@ EditorBuildSettings:
     path: Assets/Scenes/TestOverworld 1.unity
     guid: ef7c155bdb7ff80458f9167b33fcd3fe
   m_configObjects:
-    com.unity.input.settings: {fileID: 11400000, guid: 4771e1aa43e61d1428a849953ac6cc7d, type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: 7d141cb14b7974b4e9c6ea9f41f061a0, type: 2}

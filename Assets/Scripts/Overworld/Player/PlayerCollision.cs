@@ -12,7 +12,7 @@ public class PlayerCollision : MonoBehaviour
         if (other.CompareTag("Enemy Attack")) 
         {
             enemyEncountered = true;
-            Debug.Log("Enemy Encountered");
+            
         }
     }
 

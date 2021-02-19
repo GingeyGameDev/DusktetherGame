@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Test Data
   m_EditorClassIdentifier: 
   enemyName: Lorem Ipsum
-  gridSize: {x: 5, y: 5}
-  playerStartPosition: {x: 3, y: 3}
+  gridSize: {x: 3, y: 5}
+  playerStartPosition: {x: 2, y: 5}
   attacks:
   - {fileID: 11500000, guid: 52a699d17aff84146ae4f1d59dde9e67, type: 3}
   attackOrder: {fileID: 11500000, guid: 52a699d17aff84146ae4f1d59dde9e67, type: 3}

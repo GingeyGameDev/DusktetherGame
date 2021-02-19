@@ -17,7 +17,7 @@ public class EnemyAttack : MonoBehaviour
     private EnemyDataTransfer enemyDataTransfer;
     
     [SerializeField]
-    private Object[] EnemyScripts;
+    private Object[] EnemyScripts = null;
 
     private void Start()
     {

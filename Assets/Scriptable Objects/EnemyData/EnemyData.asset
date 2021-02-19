@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14b410de980f0ac498cea8a439511a97, type: 3}
   m_Name: EnemyData
   m_EditorClassIdentifier: 
-  enemyName: 
-  gridSize: {x: 0, y: 0}
-  playerStartPosition: {x: 0, y: 0}
+  enemyName: You Shouldn't See this
+  gridSize: {x: 5, y: 5}
+  playerStartPosition: {x: 3, y: 3}
   attacks: []
+  attackOrder: {fileID: 0}
+  dialogueFiles: {fileID: 0}
