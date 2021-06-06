@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public static CameraController instance = null;
+   
 
     public GameObject mainCamera;
     public GameObject target;
@@ -16,6 +16,8 @@ public class CameraController : MonoBehaviour
     public Vector2 camMoveMax = default;
 
     PlayerMovement playerMovement;
+
+    public static CameraController instance = null;
 
     // Start is called before the first frame update
     void Start()

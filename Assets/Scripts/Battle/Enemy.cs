@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "EnemyData", menuName = "Scriptable Objects", order = 51)]
+[CreateAssetMenu(fileName = "EnemyData", menuName = "Scriptable Objects/EnemyData", order = 51)]
 public class Enemy : ScriptableObject
 {
 
@@ -19,7 +19,10 @@ public class Enemy : ScriptableObject
     private Vector2 playerStartPosition = new Vector2 (1,1);
 
     [SerializeField]
-    private List<Object> attacks = new List<Object>();
+    private List<Object> gridAttacks = new List<Object>();
+
+    [SerializeField]
+    private List<Object> bhAttacks = new List<Object>();
 
     [SerializeField]
     private Object attackOrder;
@@ -60,13 +63,22 @@ public class Enemy : ScriptableObject
         }
     }
 
-    public List<Object> Attacks
+    public List<Object> gridAttack
     {
         get
         { 
-            return attacks;
+            return gridAttacks;
         }
     }
+
+    public List<Object> bhAttack
+    {
+        get
+        {
+            return bhAttacks;
+        }
+    }
+
 
     public TextAsset DialogueFiles
     {

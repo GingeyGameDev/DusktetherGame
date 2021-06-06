@@ -92,9 +92,9 @@ public class GameManager : MonoBehaviour
 
             if (gridManager.gridSpaces[i].name == enemyScript.PlayerStartPosition.x + " " + enemyScript.PlayerStartPosition.y) 
             {
-                
 
                 player.transform.position = gridManager.gridSpaces[i].transform.position;
+                playerManager.currentSpace = gridManager.gridSpaces[i];
             }
         }
 
@@ -114,28 +114,28 @@ public class GameManager : MonoBehaviour
         
         if (turnValue == 1)
         {
-            Debug.Log("Player's Turn");
+          //  Debug.Log("Player's Turn");
             StartCoroutine(PlayerTurn());
         }
             else if (turnValue == 2)
             {
-                Debug.Log("Status Effect - ");
+             //   Debug.Log("Status Effect - ");
                 turnValue++;
                 Turn();
             }
                 else if (turnValue == 3)
                 {
-                    Debug.Log("Enemy's Turn");
+                   // Debug.Log("Enemy's Turn");
 
                     if (attackPhase == 1) //grid
                     {
-                        Debug.Log("Grid Attack");
+                     //   Debug.Log("Grid Attack");
 
                         StartCoroutine(EnemyTurnGrid());
                     }
                         else if (attackPhase == 2 && gridActivated == false ) //bullet hell
                         {
-                            Debug.Log("Bullet Hell Attack");
+                          //  Debug.Log("Bullet Hell Attack");
 
                             StartCoroutine(EnemyTurnBH());
                         }
@@ -145,10 +145,10 @@ public class GameManager : MonoBehaviour
                 }
                     else if (turnValue == 4)
                     {
-                        Debug.Log("Status Effect - ");
+                        //Debug.Log("Status Effect - ");
                         turnValue = 1;
                         roundNum++;
-                        Debug.Log("Round Ended");
+                        //Debug.Log("Round Ended");
                         Turn();
 
             
@@ -184,6 +184,8 @@ public class GameManager : MonoBehaviour
     //grid phase
     public IEnumerator EnemyTurnGrid() 
     {
+        gridManager.gridAttack(enemyScript.gridAttack ,roundNum);
+
         attackPhase++;
         Turn();
         yield break;
@@ -194,7 +196,7 @@ public class GameManager : MonoBehaviour
     {
         attackPhase = 1;
         turnValue++;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(.1f);
         Turn();
         yield break;
     }

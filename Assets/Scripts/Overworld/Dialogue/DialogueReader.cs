@@ -156,14 +156,15 @@ public class DialogueReader : MonoBehaviour
             if (skip)
             {
                 tempLine = dialogueLine;
-                dialogueManager.TextUpdate(tempLine);
+                dialogueManager.dialogue.text = tempLine;
                 faceEmotion.lineEnded = true;
                 break;
 
             }
 
             tempLine = dialogueLine.Substring(0, i);
-                dialogueManager.TextUpdate(tempLine);
+            dialogueManager.dialogue.text = tempLine;
+         
          
             
             yield return new WaitForSecondsRealtime(scrollTime);

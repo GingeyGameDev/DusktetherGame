@@ -13,8 +13,14 @@ MonoBehaviour:
   m_Name: EnemyData
   m_EditorClassIdentifier: 
   enemyName: You Shouldn't See this
+  boss: 0
   gridSize: {x: 5, y: 5}
   playerStartPosition: {x: 3, y: 3}
-  attacks: []
+  gridAttacks:
+  - {fileID: 11400000, guid: 986de3421ba214c4dae05fb29be2f2cc, type: 2}
+  - {fileID: 11400000, guid: 986de3421ba214c4dae05fb29be2f2cc, type: 2}
+  - {fileID: 11400000, guid: 986de3421ba214c4dae05fb29be2f2cc, type: 2}
+  - {fileID: 11400000, guid: 986de3421ba214c4dae05fb29be2f2cc, type: 2}
+  bhAttacks: []
   attackOrder: {fileID: 0}
   dialogueFiles: {fileID: 0}

@@ -33,11 +33,34 @@ public class DialogueManager : MonoBehaviour
     public float lineStartTime;
     public float InputWaitTime;
 
+    public static DialogueManager instance = null;
+
+    // Start is called before the first frame update
     void Start()
     {
+        if (instance == null)
+
+
+            instance = this;
+
+
+        else if (instance != this)
+
+
+            Destroy(gameObject);
+
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         dialogueReader = FindObjectOfType<DialogueReader>();
-        faceEmotion = gameObject.GetComponent<FaceEmotion>();
+        try
+        {
+            faceEmotion = gameObject.GetComponent<FaceEmotion>();
+        }
+        catch (MissingComponentException) 
+        {
+            faceEmotion = null;
+        }
+
+        
 
         dialogue.text = "";
 
@@ -130,12 +153,6 @@ public class DialogueManager : MonoBehaviour
 
     
 
-    //updates the text to the dialogue line
-    public void TextUpdate(string tempLine) 
-    {
-        dialogue.text = tempLine;
-
-    }
 
     void Update() 
     {

@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Test Data
   m_EditorClassIdentifier: 
   enemyName: Lorem Ipsum
-  gridSize: {x: 3, y: 5}
+  boss: 0
+  gridSize: {x: 7, y: 7}
   playerStartPosition: {x: 2, y: 5}
-  attacks:
-  - {fileID: 11500000, guid: 52a699d17aff84146ae4f1d59dde9e67, type: 3}
+  gridAttacks: []
+  bhAttacks: []
   attackOrder: {fileID: 11500000, guid: 52a699d17aff84146ae4f1d59dde9e67, type: 3}
   dialogueFiles: {fileID: 4900000, guid: 9add4a390c82f324ab13b4e0d43d7a51, type: 3}

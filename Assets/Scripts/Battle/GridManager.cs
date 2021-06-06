@@ -8,7 +8,8 @@ public class GridManager : MonoBehaviour
     GridInitialization gridInitializer;
 
     public List<GameObject> gridSpaces = new List<GameObject>();
-    // Start is called before the first frame update
+
+
     void Start()
     {
         gridInitializer = gameObject.GetComponent<GridInitialization>();
@@ -16,14 +17,15 @@ public class GridManager : MonoBehaviour
         gridSpaces = gridInitializer.gridTiles;
     }
 
-    public void gridAttack(int round) 
-    { 
-    
-    }
-
-    // Update is called once per frame
-    void Update()
+    public void gridAttack(List<Object> attacks, int round) 
     {
-        
+        if (round <= attacks.Count)
+        {
+            Debug.Log(attacks[round - 1].name);
+        }
+        else {  }
+
+
+
     }
 }
