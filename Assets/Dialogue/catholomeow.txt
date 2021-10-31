@@ -2,9 +2,9 @@
 <fh>Indubitably
 <fs>Indubitablyn't?
 <fa>INDUBITABLY!
-<fs1>Indubitably?
-<fs2>Indubitablyn't?
-<fs3>In-dub-it-ably?
+<f1>Indubitably?
+<f2>Indubitablyn't?
+<f3>In-dub-it-ably?
 <rl>
 <el>
 

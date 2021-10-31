@@ -87,7 +87,7 @@ public class SceneEdge : MonoBehaviour
 
 
         SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName(previousScene));
-
+        
 
 
     }

@@ -33,6 +33,8 @@ public class DialogueManager : MonoBehaviour
     public float lineStartTime;
     public float InputWaitTime;
 
+    public GameObject interactedObject;
+
     public static DialogueManager instance = null;
 
     // Start is called before the first frame update
@@ -51,31 +53,21 @@ public class DialogueManager : MonoBehaviour
 
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         dialogueReader = FindObjectOfType<DialogueReader>();
-        try
-        {
-            faceEmotion = gameObject.GetComponent<FaceEmotion>();
-        }
-        catch (MissingComponentException) 
-        {
-            faceEmotion = null;
-        }
-
         
-
         dialogue.text = "";
 
         textRect = dialogue.gameObject.GetComponent<RectTransform>();
 
         skipable = true;
 
-        
+        faceEmotion = gameObject.GetComponent<FaceEmotion>();
 
     }
 
 
 
     //gets all important info for reading a line
-    public void GetDialogue(string direction, GameObject interactedObject)
+    public void GetDialogue(string direction)
     {
 
         //get the dialogue script off of the interacted object
@@ -85,45 +77,15 @@ public class DialogueManager : MonoBehaviour
         //activate text box and child gameobjects
         textBox.SetActive(true);
 
+        nameManager = dialogueScript.objectName;
 
-        //debug: if someone made an oopsie and entered names in both places
-        if (dialogueScript.charName != "" && dialogueScript.objectName != "")
-        {
-            Debug.Log("Incorrect Interaction Name Inputted");
-        }
+        faceEmotion.faceSprites = dialogueScript.faceSprites;
 
-        //if name is inputted in the character slot, the function for the character dialogue is called
-        if (dialogueScript.charName != "")
-        {
-            nameManager = dialogueScript.charName;
-            CharacterDialogue();
-
-           // Debug.Log(nameManager + "dialogue " + direction);
-
-        }
-
-        //if name is inputted in the object slot, the function for the object dialogue is called
-        else if (dialogueScript.objectName != null)
-        {
-           nameManager = dialogueScript.objectName;
-            ObjectDialogue();
-
-           //Debug.Log(nameManager + " dialogue " + direction);
-
-        }
-
-        //debug
-        //if no name is entered, set to null
-        else {nameManager = null;}
         //if no dialogue file is found
         if (dialogueFile == null) { Debug.Log("file missing manager"); }
 
-
-
         //starts the reading of the file with the name and the times interacted
-        dialogueReader.ReadLine(dialogueFile, nameManager, dialogueScript.timesInteracted);
-
-       
+        dialogueReader.lineInitialization(dialogueFile, nameManager, dialogueScript.timesInteracted);
 
     }
 
@@ -138,8 +100,6 @@ public class DialogueManager : MonoBehaviour
 
         textRect.sizeDelta = new Vector2(545, 80);
         textRect.anchoredPosition = new Vector2(68, 0);
-
-        faceEmotion.faceSprites = dialogueScript.faceSprites;
     }
 
     public void ObjectDialogue()
@@ -160,7 +120,6 @@ public class DialogueManager : MonoBehaviour
         {
             if (dialogue.text != dialogueReader.dialogueLine)
             {
-                dialogueReader.StopCoroutine("TextScroll");
                 dialogueReader.skip = true;
                
             }
@@ -168,9 +127,9 @@ public class DialogueManager : MonoBehaviour
             {
                 dialogueReader.skip = false;
                 dialogueReader.lineNum++;
-                dialogueReader.ReadLine(dialogueFile, nameManager, dialogueScript.timesInteracted);
+                dialogueReader.ReadLine(dialogueReader.lines, dialogueScript.timesInteracted);
             }
-        }
+        } 
     }
 
         //called to close the dialogue

@@ -3,8 +3,10 @@
 [System.Serializable]
 public class Dialogue : MonoBehaviour
 {
-    public string charName = null;
     public string objectName = null;
+
+    public bool isCharacter = false;
+
     public Sprite[] faceSprites;
 
     public int timesInteracted = 0;

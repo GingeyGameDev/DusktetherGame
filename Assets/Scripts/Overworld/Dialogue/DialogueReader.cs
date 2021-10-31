@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class DialogueReader : MonoBehaviour
 {
+
     [HideInInspector]
     public string[] lines;
+
+    string objectName;
 
     [HideInInspector]
     public string dialogueLine;
@@ -21,135 +24,119 @@ public class DialogueReader : MonoBehaviour
     DialogueManager dialogueManager;
     FaceEmotion faceEmotion;
 
+    public string dialogueBlock;
+
     private void Start()
     {
         dialogueManager = gameObject.GetComponent<DialogueManager>();
         faceEmotion = gameObject.GetComponent<FaceEmotion>();
     }
 
-    public void ReadLine(TextAsset dialogueFile, string name, int timesInteracted)
+    public void lineInitialization(TextAsset dialogueFile, string name, int timesInteracted)
+    {
+        objectName = name;
+
+        lineNum = 0;
+
+        int dialogueStartLine = 0;
+
+        dialogueStartLine = dialogueFile.text.IndexOf('<' + name + '-' + timesInteracted + '>');
+
+        dialogueBlock = null;
+
+        dialogueBlock = dialogueFile.text.Substring(dialogueStartLine, (dialogueFile.text.IndexOf(("<el>"), dialogueStartLine) - dialogueStartLine + 4));
+
+        lines = dialogueBlock.Split('\n');
+
+        ReadLine(lines, timesInteracted);
+    }
+
+    public void ReadLine(string[] lines, int timesInteracted)
     {
         faceEmotion.lineEnded = false;
 
-        if (dialogueFile != null)
-        {
+        lines[lineNum] = lines[lineNum].Trim(' ', '\n', '\r');
+        dialogueLine = lines[lineNum];
+       
 
-            int dialogueStartLine = 0;
-
-            dialogueStartLine = dialogueFile.text.IndexOf('<' + name + '-' + timesInteracted + '>');
-
-
-            //Debug.Log('<' + name + '-' + timesInteracted + '>');
-
-            string dialogueBlock = null;
-
-            dialogueBlock = dialogueFile.text.Substring(dialogueStartLine, (dialogueFile.text.IndexOf(("<el>"), dialogueStartLine) - dialogueStartLine + 4));
-
-            lines = dialogueBlock.Split('\n');
-
-
-            lines[lineNum] = lines[lineNum].Trim(' ', '\n', '\r');
-
-
-
-            dialogueLine = lines[lineNum];
-
-            if (dialogueLine.StartsWith("<fh>"))
-            {
-
-                dialogueLine = lines[lineNum].Substring(4, dialogueLine.Length - 4);
-
-                faceEmotion.Emotion("happy");
-
-            }
-                else if (dialogueLine.StartsWith("<fs>"))
-                {
-                    dialogueLine = lines[lineNum].Substring(4, dialogueLine.Length - 4);
-
-                    faceEmotion.Emotion("sad");
-                }
-                    else if (dialogueLine.StartsWith("<fa>")) 
-                    {
-                        dialogueLine = lines[lineNum].Substring(4, dialogueLine.Length - 4);
-
-                        faceEmotion.Emotion("angry");
-
-
-                    }
-                        else if (dialogueLine.StartsWith("<fs1>"))
-                        {
-                            dialogueLine = lines[lineNum].Substring(5, dialogueLine.Length - 5);
-
-                            faceEmotion.Emotion("special1");
-
-
-                        }
-                            else if (dialogueLine.StartsWith("<fs2>"))
-                            {
-                                dialogueLine = lines[lineNum].Substring(5, dialogueLine.Length - 5);
-
-                                faceEmotion.Emotion("special2");
-
-
-                            }
-                                else if (dialogueLine.StartsWith("<fs3>"))
-                                {
-                                    dialogueLine = lines[lineNum].Substring(5, dialogueLine.Length - 5);
-
-                                    faceEmotion.Emotion("special3");
-
-
-                                }
-
-
-
-            if (dialogueLine == ('<' + name + '-' + timesInteracted + '>'))
+        if (dialogueLine.Equals("<" + objectName + "-" + timesInteracted + ">"))
             {
                 lineNum++;
-                ReadLine(dialogueFile, name, timesInteracted);
+                ReadLine(lines, timesInteracted);
 
             }
-            else{ 
-
-
-
-
-                if (dialogueLine == "<rl>")
+            else
+            {
+               if (dialogueLine == "<rl>")
                 {
                     lineNum++;
 
                     dialogueManager.StartCoroutine("DialogueEnd", true);
                 }
 
-                //   Debug.Log(dialogueLine);
-
-
-                if (dialogueLine == "<el>")
+                else if (dialogueLine == "<el>")
                 {
                     dialogueManager.StartCoroutine("DialogueEnd", false);
                 }
 
-
-                StartCoroutine(TextScroll(scrollTime));
-
-
+               else StartCoroutine(TextScroll(scrollTime));
             }
-        }
-            else 
-            {
-               Debug.Log("Dialogue file is null");
-            }
+
+        if (dialogueLine.StartsWith("<f"))
+        {
+            emotionCheck(dialogueLine);
+        } 
     }
+    
+
+    public void emotionCheck(string line)
+    {
+        //face
+        switch (line.Substring(2,1))
+        { 
+            case "h":
+                faceEmotion.Emotion("happy");
+                break;
+
+            case "s":
+                faceEmotion.Emotion("sad");
+                break;
+
+            case "a":
+                faceEmotion.Emotion("angry");
+                break;
+
+            case "e":
+                faceEmotion.Emotion("excited");
+                break;
+
+            case "1":
+                faceEmotion.Emotion("special1");
+                break;
+
+            case "2":
+                faceEmotion.Emotion("special2");
+                break;
+
+            case "3":
+                faceEmotion.Emotion("special3");
+                break;
+
+            default:
+                Debug.Log("Error: Dialogue Reader \n | No Face Found");
+                break;
+
+        }
+        dialogueLine = dialogueLine.Substring(4, dialogueLine.Length - 4);
+    }
+
+
     public IEnumerator TextScroll(float waitTime) 
     {
        
-
         dialogueManager.lineStartTime = Time.time;
 
         string tempLine = null;
-
-        
-
 
             for (var i = 0; i <= dialogueLine.Length; i++)
             {
@@ -158,22 +145,28 @@ public class DialogueReader : MonoBehaviour
                 tempLine = dialogueLine;
                 dialogueManager.dialogue.text = tempLine;
                 faceEmotion.lineEnded = true;
+                yield return new WaitForEndOfFrame();
                 break;
 
             }
+            else 
+            {
 
-            tempLine = dialogueLine.Substring(0, i);
-            dialogueManager.dialogue.text = tempLine;
-         
-         
-            
+                tempLine = dialogueLine.Substring(0, i);
+                dialogueManager.dialogue.text = tempLine;
+
+            }
+
+
+
             yield return new WaitForSecondsRealtime(scrollTime);
+            yield return new WaitForEndOfFrame();
            
-        }
+             }
         skip = false;
 
-
         faceEmotion.lineEnded = true;
+
     }
 }
 

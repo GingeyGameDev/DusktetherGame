@@ -15,6 +15,7 @@ public class FaceEmotion : MonoBehaviour
     public int choosenFrame;
     public float animationTime;
 
+    [HideInInspector]
     public bool lineEnded;
 
     // Start is called before the first frame update
@@ -24,63 +25,53 @@ public class FaceEmotion : MonoBehaviour
         lineEnded = false;
     }
 
-
-
-    public void Emotion(string emotion) 
+    public void Emotion(string emotion)
     {
-        StopCoroutine(EmotionsAnimator(0));
+        StopAllCoroutines();
 
-
-        if (emotion == "happy")
+        switch (emotion)
         {
-          //  faceRenderer.sprite = faceSprites[0];
-             StartCoroutine(EmotionsAnimator(0,1));
-            
+            case "happy":
+                //  faceRenderer.sprite = faceSprites[0];
+                StartCoroutine(EmotionsAnimator(0, 1));
+                break;
+
+            case "sad":
+                //  faceRenderer.sprite = faceSprites[1];
+
+                StartCoroutine(EmotionsAnimator(2, 3));
+                break;
+
+            case "angry":
+                //  faceRenderer.sprite = faceSprites[2];
+
+                StartCoroutine(EmotionsAnimator(4, 5));
+                break;
+
+            case "special1":
+                // faceRenderer.sprite = faceSprites[3];
+
+                StartCoroutine(EmotionsAnimator(6, 7));
+                break;
+
+            case "special2":
+                //  faceRenderer.sprite = faceSprites[4];
+
+                StartCoroutine(EmotionsAnimator(8, 9));
+                break;
+
+            case "special3":
+                // faceRenderer.sprite = faceSprites[5];
+
+                StartCoroutine(EmotionsAnimator(10, 11));
+                break;
+
+            default:
+                Debug.Log("Face Emotion: /n | Face not found");
+                break;
         }
-            else if (emotion == "sad")
-            {
-              //  faceRenderer.sprite = faceSprites[1];
-
-                 StartCoroutine(EmotionsAnimator(2,3));
-               
-            }
-                else if (emotion == "angry")
-                {
-                  //  faceRenderer.sprite = faceSprites[2];
-
-                     StartCoroutine(EmotionsAnimator(4,5));
-                     
-
-                }
-                    else if (emotion == "special1")
-                    {
-                       // faceRenderer.sprite = faceSprites[3];
-
-                         StartCoroutine(EmotionsAnimator(6,7));
-
-
-                    }
-                        else if (emotion == "special2")
-                        {
-                          //  faceRenderer.sprite = faceSprites[4];
-
-                             StartCoroutine(EmotionsAnimator(8,9));
-
-
-                        }
-                            else if (emotion == "special3")
-                            {
-                               // faceRenderer.sprite = faceSprites[5];
-
-                                 StartCoroutine(EmotionsAnimator(10,11));
-
-
-                            }
-
-
     }
-
-    public IEnumerator EmotionsAnimator(int frame1 , int frame2 = -1)
+    public IEnumerator EmotionsAnimator(int frame1 , int frame2)
     {
 
         while (!lineEnded) 
@@ -90,7 +81,7 @@ public class FaceEmotion : MonoBehaviour
             if (frame2 != -1)
             {
            
-                yield return new WaitForSeconds(animationTime);
+                yield return new WaitForSeconds(animationTime + Time.deltaTime);
 
                 faceRenderer.sprite = faceSprites[frame2];
 
@@ -102,12 +93,14 @@ public class FaceEmotion : MonoBehaviour
                 yield break;
             }
 
-            yield return new WaitForSeconds(animationTime);
+            yield return new WaitForSeconds(animationTime + Time.deltaTime);
+            yield return new WaitForFixedUpdate();
         }
 
-       // faceRenderer.sprite = faceSprites[frame1];
+        // faceRenderer.sprite = faceSprites[frame1];
+        yield return new WaitForFixedUpdate();
 
-        StopCoroutine(EmotionsAnimator(0,0));
+        StopAllCoroutines();
 
     }
 }

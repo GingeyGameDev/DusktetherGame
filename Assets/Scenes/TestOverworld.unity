@@ -446,6 +446,7 @@ MonoBehaviour:
   lineNum: 0
   scrollTime: 0.025
   skip: 0
+  dialogueBlock: 
 --- !u!4 &633147495
 Transform:
   m_ObjectHideFlags: 0
@@ -482,6 +483,7 @@ MonoBehaviour:
   dialogueFile: {fileID: 4900000, guid: c3dbc1fa5f1df4d48bb506c64414d0cf, type: 3}
   lineStartTime: 0
   InputWaitTime: 0.1
+  interactedObject: {fileID: 0}
 --- !u!114 &633147497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,8 +519,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1082451c302b0dc41963731fd1e6ba67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charName: 
   objectName: doubleDesk1
+  isCharacter: 0
   faceSprites: []
   timesInteracted: 0
   dialogueText: {fileID: 4900000, guid: 79d5a06da86f53545bdde9e293cd1d82, type: 3}
@@ -685,8 +687,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1082451c302b0dc41963731fd1e6ba67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charName: 
   objectName: desk
+  isCharacter: 0
   faceSprites: []
   timesInteracted: 0
   dialogueText: {fileID: 4900000, guid: c3dbc1fa5f1df4d48bb506c64414d0cf, type: 3}
@@ -731,8 +733,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1082451c302b0dc41963731fd1e6ba67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charName: 
   objectName: doubleDesk1
+  isCharacter: 0
   faceSprites: []
   timesInteracted: 0
   dialogueText: {fileID: 4900000, guid: 79d5a06da86f53545bdde9e293cd1d82, type: 3}
@@ -1017,6 +1019,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: -2695619058785784247, guid: 82f564f260c43a7429b8438c32e4f205, type: 3}
+--- !u!1 &1360375596 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4394709440708071045, guid: c82c5950c58416e4596f85f99ee31741, type: 3}
+  m_PrefabInstance: {fileID: 4394709441212086009}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1360375597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360375596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fa3e28c7b7ec3246a5874ff239938a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1588712712
 GameObject:
   m_ObjectHideFlags: 0
@@ -1160,9 +1179,9 @@ GameObject:
   - component: {fileID: 1873733922}
   - component: {fileID: 1873733921}
   - component: {fileID: 1873733920}
-  - component: {fileID: 1873733919}
   - component: {fileID: 1873733923}
   - component: {fileID: 1873733918}
+  - component: {fileID: 1873733919}
   m_Layer: 0
   m_Name: Catholomeow
   m_TagString: Interactable
@@ -1198,8 +1217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1082451c302b0dc41963731fd1e6ba67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charName: Catholomeow
-  objectName: 
+  objectName: Catholomeow
+  isCharacter: 1
   faceSprites:
   - {fileID: 6925477704491239415, guid: b9f60d5b8caf66f498c67eb669226087, type: 3}
   - {fileID: -3345516780775478273, guid: b9f60d5b8caf66f498c67eb669226087, type: 3}
@@ -1597,8 +1616,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1082451c302b0dc41963731fd1e6ba67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charName: 
   objectName: Lamp1
+  isCharacter: 0
   faceSprites: []
   timesInteracted: 0
   dialogueText: {fileID: 4900000, guid: 79d5a06da86f53545bdde9e293cd1d82, type: 3}
@@ -1819,7 +1838,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5080471969400144785, guid: 4050176442a1abe479df5f92568b088c, type: 3}
       propertyPath: camMoveMax.x
-      value: 100
+      value: -43.71
       objectReference: {fileID: 0}
     - target: {fileID: 5080471969400144785, guid: 4050176442a1abe479df5f92568b088c, type: 3}
       propertyPath: camMoveMax.y
@@ -1827,7 +1846,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5080471969400144785, guid: 4050176442a1abe479df5f92568b088c, type: 3}
       propertyPath: sceneMoveAmount
-      value: 3
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 9063323642808256938, guid: 4050176442a1abe479df5f92568b088c, type: 3}
       propertyPath: m_LocalPosition.x

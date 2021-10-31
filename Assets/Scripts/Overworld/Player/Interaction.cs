@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class Interaction : MonoBehaviour
 {
@@ -10,9 +11,10 @@ public class Interaction : MonoBehaviour
     public Vector2 dirOffSet;
     public RaycastHit2D interactable;
 
-
     PlayerMovement playerMovement;
     Interacted interacted;
+
+    public float waitTime = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -23,15 +25,18 @@ public class Interaction : MonoBehaviour
         anim = playerObject.GetComponent<Animator>();
         interacted = FindObjectOfType<Interacted>();
 
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawLine((Vector2)transform.position - new Vector2(0.0f, .87f), ((Vector2)transform.position - new Vector2(0.0f, .87f)) + (interactableDistance * dirOffSet), Color.red);
+        
 
         if (playerMovement.playerMoveable != false) 
         {
+           
+
             if (Input.GetButtonDown("confirm"))
             {
                 //get last move floats and normalize
@@ -41,7 +46,7 @@ public class Interaction : MonoBehaviour
                 interactable = Physics2D.Raycast((Vector2)transform.position - new Vector2(0.0f, .87f), dirOffSet, interactableDistance);
 
                 //use for debug purposes
-                 
+                //Debug.DrawLine((Vector2)transform.position - new Vector2(0.0f, .87f), ((Vector2)transform.position - new Vector2(0.0f, .87f)) + (interactableDistance * dirOffSet), Color.red);
 
                 if (interactable.collider != null)
                 {
