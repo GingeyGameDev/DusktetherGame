@@ -81,8 +81,7 @@ public class SceneEdge : MonoBehaviour
         cameraControl.camMoveMin = camMoveMin;
         cameraControl.camMoveMax = camMoveMax;
 
-        Debug.Log("object moved");
-
+        cameraControl.mainCamera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -15);
 
 
 
@@ -91,4 +90,6 @@ public class SceneEdge : MonoBehaviour
 
 
     }
+
+
 }

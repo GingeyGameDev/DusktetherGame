@@ -1830,7 +1830,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5080471969400144785, guid: 4050176442a1abe479df5f92568b088c, type: 3}
       propertyPath: camMoveMin.x
-      value: -100
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 5080471969400144785, guid: 4050176442a1abe479df5f92568b088c, type: 3}
       propertyPath: camMoveMin.y
@@ -1838,7 +1838,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5080471969400144785, guid: 4050176442a1abe479df5f92568b088c, type: 3}
       propertyPath: camMoveMax.x
-      value: -43.71
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5080471969400144785, guid: 4050176442a1abe479df5f92568b088c, type: 3}
       propertyPath: camMoveMax.y
